@@ -31,8 +31,9 @@ function Nav() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/60 border-b border-border">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2">
-          <img src={logoAsset.url} alt="TREGTIA" className="h-7 w-auto invert brightness-200" />
+        <a href="#top" className="flex items-center gap-2 relative">
+          <img src={logoAsset.url} alt="TREGTIA" className="h-7 w-auto" />
+          <div className="absolute inset-0 bg-[#3B82F6] mix-blend-color pointer-events-none" />
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
           <a href="#properties" className="hover:text-foreground transition">Properties</a>
@@ -277,7 +278,10 @@ function Footer() {
   return (
     <footer className="border-t border-border py-12">
       <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-6">
-        <img src={logoAsset.url} alt="TREGTIA" className="h-6 w-auto invert brightness-200" />
+        <div className="relative">
+          <img src={logoAsset.url} alt="TREGTIA" className="h-6 w-auto" />
+          <div className="absolute inset-0 bg-[#3B82F6] mix-blend-color pointer-events-none" />
+        </div>
         <div className="text-sm text-muted-foreground">© {new Date().getFullYear()} TREGTIA. All rights reserved.</div>
         <div className="flex gap-6 text-sm text-muted-foreground">
           <a href="#" className="hover:text-foreground">Instagram</a>
