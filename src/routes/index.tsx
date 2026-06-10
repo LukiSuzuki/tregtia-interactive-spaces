@@ -285,7 +285,7 @@ function Footer() {
           <img
             src={logoUrl}
             alt="TREGTIA"
-            className="h-7 w-auto drop-shadow-[0_0_14px_rgba(96,165,250,0.5)]"
+            className="h-10 w-auto drop-shadow-[0_0_14px_rgba(96,165,250,0.5)]"
           />
         </div>
         <div className="text-sm text-muted-foreground">© {new Date().getFullYear()} TREGTIA. All rights reserved.</div>
