@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import logoUrl from "@/assets/tregtia-logo-blue.png";
-import { ArrowUpRight, Box, Compass, Eye, Play, MapPin, Mail, Phone } from "lucide-react";
+import { ArrowUpRight, Play, MapPin, Mail, Phone, Cuboid, Eye, Compass } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "TREGTIA — Architecture, Reimagined" },
-      { name: "description", content: "Landmark buildings, explored in immersive 3D before they're built." },
+      { title: "TREGTIA — Architecture & Immersive 3D Walkthroughs" },
+      { name: "description", content: "TREGTIA builds landmark properties you can walk through in 3D before they exist." },
     ],
   }),
   component: Index,
@@ -17,10 +17,11 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
       <Hero />
-      <Marquee />
+      <Masthead />
       <Featured />
       <Walkthrough />
       <Process />
+      <Editorial />
       <Contact />
       <Footer />
     </div>
@@ -29,22 +30,19 @@ function Index() {
 
 function Nav() {
   return (
-    <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/60 border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2">
-          <img
-            src={logoUrl}
-            alt="TREGTIA"
-            className="h-12 w-auto drop-shadow-[0_0_18px_rgba(96,165,250,0.55)]"
-          />
+    <header className="fixed top-0 inset-x-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+      <div className="max-w-[1400px] mx-auto px-8 h-20 flex items-center justify-between">
+        <a href="#top" className="flex items-center gap-3">
+          <img src={logoUrl} alt="TREGTIA" className="h-10 w-auto" />
         </a>
-        <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-          <a href="#properties" className="hover:text-foreground transition">Properties</a>
-          <a href="#walkthrough" className="hover:text-foreground transition">3D Tours</a>
-          <a href="#process" className="hover:text-foreground transition">Process</a>
-          <a href="#contact" className="hover:text-foreground transition">Contact</a>
+        <nav className="hidden md:flex items-center gap-10 text-[13px] tracking-wide text-foreground/70">
+          <a href="#properties" className="hover:text-primary transition">Properties</a>
+          <a href="#walkthrough" className="hover:text-primary transition">3D Tours</a>
+          <a href="#process" className="hover:text-primary transition">Process</a>
+          <a href="#journal" className="hover:text-primary transition">Journal</a>
+          <a href="#contact" className="hover:text-primary transition">Contact</a>
         </nav>
-        <a href="#contact" className="text-sm px-4 py-2 rounded-full bg-foreground text-background hover:opacity-90 transition flex items-center gap-1.5">
+        <a href="#contact" className="text-[13px] px-5 py-2.5 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition flex items-center gap-1.5">
           Book a viewing <ArrowUpRight className="size-3.5" />
         </a>
       </div>
@@ -54,32 +52,49 @@ function Nav() {
 
 function Hero() {
   return (
-    <section id="top" className="relative pt-32 pb-24 overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
-      <div className="absolute inset-0 bg-grid opacity-60" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
-      <div className="relative max-w-7xl mx-auto px-6">
-        <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground mb-8">
-          <span className="size-1.5 rounded-full bg-brand animate-pulse" />
-          New developments · 2026 collection
-        </div>
-        <h1 className="text-balance font-display text-[clamp(2.75rem,8vw,7rem)] leading-[0.95] font-medium max-w-5xl">
-          Buildings you can walk through{" "}
-          <span className="italic text-muted-foreground">before</span> they exist.
-        </h1>
-        <p className="mt-8 max-w-xl text-lg text-muted-foreground">
-          TREGTIA designs and delivers landmark residences and commercial spaces.
-          Step inside every floor with immersive 3D walkthroughs — no hard hat required.
-        </p>
-        <div className="mt-10 flex flex-wrap gap-3">
-          <a href="#properties" className="px-6 py-3 rounded-full bg-foreground text-background font-medium hover:opacity-90 transition flex items-center gap-2">
-            Explore properties <ArrowUpRight className="size-4" />
-          </a>
-          <a href="#walkthrough" className="px-6 py-3 rounded-full border border-border hover:bg-accent transition flex items-center gap-2">
-            <Play className="size-4" /> Watch 3D demo
-          </a>
+    <section id="top" className="relative pt-32 pb-16 border-b border-border" style={{ background: "var(--gradient-hero)" }}>
+      <div className="max-w-[1400px] mx-auto px-8">
+        <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.3em] text-primary mb-10">
+          <span className="h-px w-10 bg-primary" />
+          Issue Nº 01 · 2026 Collection
         </div>
 
-        <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl">
+        <div className="grid lg:grid-cols-12 gap-10 items-end">
+          <div className="lg:col-span-8">
+            <h1 className="font-display text-[clamp(3rem,9vw,8rem)] leading-[0.92] text-ink">
+              Architecture<br />
+              <em className="text-primary font-normal">re&shy;imagined</em>{" "}
+              before the first stone.
+            </h1>
+          </div>
+          <div className="lg:col-span-4">
+            <p className="text-lg text-foreground/75 leading-relaxed border-l-2 border-primary pl-5">
+              TREGTIA designs landmark residences and commercial buildings —
+              and lets you walk through every floor in immersive 3D long before
+              construction is complete.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href="#properties" className="px-6 py-3 bg-primary text-primary-foreground hover:bg-ink transition flex items-center gap-2 text-sm">
+                Explore properties <ArrowUpRight className="size-4" />
+              </a>
+              <a href="#walkthrough" className="px-6 py-3 border border-border hover:border-primary hover:text-primary transition flex items-center gap-2 text-sm">
+                <Play className="size-3.5" /> Watch 3D demo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-20 aspect-[21/9] relative overflow-hidden border border-border bg-accent">
+          <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
+            Hero render — add cover image
+          </div>
+          <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end text-xs uppercase tracking-[0.25em] text-background mix-blend-difference">
+            <span>The Meridian · Downtown</span>
+            <span>42 floors / 2026</span>
+          </div>
+        </div>
+
+        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-10 border-t border-border pt-10">
           {[
             ["120+", "Projects delivered"],
             ["18", "Cities"],
@@ -87,8 +102,8 @@ function Hero() {
             ["100%", "3D-previewed"],
           ].map(([n, l]) => (
             <div key={l}>
-              <div className="font-display text-3xl">{n}</div>
-              <div className="text-sm text-muted-foreground mt-1">{l}</div>
+              <div className="font-display text-4xl text-ink">{n}</div>
+              <div className="text-xs uppercase tracking-[0.2em] text-foreground/60 mt-2">{l}</div>
             </div>
           ))}
         </div>
@@ -97,14 +112,14 @@ function Hero() {
   );
 }
 
-function Marquee() {
-  const items = ["Residential Towers", "Mixed-Use", "Hospitality", "Commercial", "Master Planning", "Adaptive Reuse"];
+function Masthead() {
+  const items = ["Residential", "Mixed-Use", "Hospitality", "Commercial", "Master Planning", "Adaptive Reuse"];
   return (
-    <div className="border-y border-border py-6 overflow-hidden">
-      <div className="flex gap-12 animate-[scroll_30s_linear_infinite] whitespace-nowrap text-muted-foreground">
+    <div className="border-b border-border py-5 overflow-hidden bg-background">
+      <div className="flex gap-12 animate-[scroll_40s_linear_infinite] whitespace-nowrap text-foreground/50">
         {[...items, ...items, ...items].map((t, i) => (
-          <span key={i} className="text-sm uppercase tracking-[0.3em] flex items-center gap-12">
-            {t} <span className="size-1 rounded-full bg-border" />
+          <span key={i} className="text-[11px] uppercase tracking-[0.4em] flex items-center gap-12 font-display italic">
+            {t} <span className="h-px w-8 bg-border" />
           </span>
         ))}
       </div>
@@ -114,44 +129,69 @@ function Marquee() {
 }
 
 function Featured() {
-  const properties = [
-    { name: "The Meridian", loc: "Downtown · 42 floors", status: "Under construction", tag: "Residential" },
-    { name: "Aurora Place", loc: "Harbor District · 28 floors", status: "Pre-sale", tag: "Mixed-Use" },
-    { name: "Sole Tower", loc: "Hillside · 16 floors", status: "Completed", tag: "Commercial" },
+  const lead = { name: "The Meridian", loc: "Downtown · 42 floors", status: "Under construction", tag: "Residential", year: "2026" };
+  const others = [
+    { name: "Aurora Place", loc: "Harbor District · 28 floors", status: "Pre-sale", tag: "Mixed-Use", year: "2027" },
+    { name: "Sole Tower", loc: "Hillside · 16 floors", status: "Completed", tag: "Commercial", year: "2025" },
+    { name: "Quartier Nord", loc: "North Bank · 9 floors", status: "Concept", tag: "Residential", year: "2028" },
   ];
+
   return (
-    <section id="properties" className="py-32 max-w-7xl mx-auto px-6">
-      <div className="flex items-end justify-between flex-wrap gap-6 mb-16">
-        <div>
-          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">Featured properties</div>
-          <h2 className="font-display text-5xl md:text-6xl max-w-2xl text-balance">Current and upcoming developments.</h2>
+    <section id="properties" className="py-28 max-w-[1400px] mx-auto px-8">
+      <div className="grid lg:grid-cols-12 gap-8 items-end mb-14 border-b border-border pb-10">
+        <div className="lg:col-span-8">
+          <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">Featured · Nº 01</div>
+          <h2 className="font-display text-5xl md:text-7xl text-balance text-ink">
+            Current &amp; <em className="text-primary">upcoming</em> developments.
+          </h2>
         </div>
-        <a href="#" className="text-sm text-muted-foreground hover:text-foreground flex items-center gap-1.5">
-          View all <ArrowUpRight className="size-3.5" />
-        </a>
+        <div className="lg:col-span-4 lg:text-right">
+          <a href="#" className="text-sm text-foreground/70 hover:text-primary inline-flex items-center gap-1.5 border-b border-border pb-1">
+            View the full catalogue <ArrowUpRight className="size-3.5" />
+          </a>
+        </div>
       </div>
-      <div className="grid md:grid-cols-3 gap-6">
-        {properties.map((p) => (
-          <article key={p.name} className="group rounded-lg overflow-hidden bg-card border border-border hover:border-foreground/30 transition">
-            <div className="aspect-[4/5] relative bg-secondary overflow-hidden">
-              <div className="absolute inset-0 bg-grid opacity-40" />
-              <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-xs uppercase tracking-widest">
-                Render placeholder
-              </div>
-              <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs bg-background/70 backdrop-blur border border-border">
-                {p.status}
-              </div>
-              <div className="absolute bottom-4 right-4 size-10 rounded-full bg-foreground text-background flex items-center justify-center group-hover:scale-110 transition">
-                <ArrowUpRight className="size-4" />
-              </div>
+
+      {/* Magazine grid: 1 lead + 3 side */}
+      <div className="grid lg:grid-cols-12 gap-8">
+        <article className="lg:col-span-7 group cursor-pointer">
+          <div className="aspect-[5/4] relative overflow-hidden bg-accent border border-border">
+            <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
+              Lead render
             </div>
-            <div className="p-6">
-              <div className="text-xs text-muted-foreground uppercase tracking-widest">{p.tag}</div>
-              <h3 className="font-display text-2xl mt-2">{p.name}</h3>
-              <p className="text-sm text-muted-foreground mt-1">{p.loc}</p>
+            <div className="absolute top-5 left-5 px-3 py-1 text-[10px] uppercase tracking-[0.25em] bg-background/90 backdrop-blur border border-border">
+              {lead.status}
             </div>
-          </article>
-        ))}
+          </div>
+          <div className="mt-6 flex items-start justify-between gap-6">
+            <div>
+              <div className="text-[11px] uppercase tracking-[0.3em] text-primary">{lead.tag} · {lead.year}</div>
+              <h3 className="font-display text-4xl md:text-5xl mt-3 text-ink group-hover:text-primary transition">{lead.name}</h3>
+              <p className="text-foreground/70 mt-2">{lead.loc}</p>
+            </div>
+            <ArrowUpRight className="size-6 mt-3 text-primary shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </div>
+        </article>
+
+        <div className="lg:col-span-5 space-y-8">
+          {others.map((p) => (
+            <article key={p.name} className="group grid grid-cols-5 gap-5 cursor-pointer border-b border-border pb-8 last:border-0">
+              <div className="col-span-2 aspect-[4/5] bg-accent border border-border relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-widest">
+                  Render
+                </div>
+              </div>
+              <div className="col-span-3 flex flex-col justify-between">
+                <div>
+                  <div className="text-[10px] uppercase tracking-[0.3em] text-primary">{p.tag} · {p.year}</div>
+                  <h4 className="font-display text-2xl mt-2 text-ink group-hover:text-primary transition">{p.name}</h4>
+                  <p className="text-sm text-foreground/70 mt-1">{p.loc}</p>
+                </div>
+                <div className="text-[10px] uppercase tracking-[0.25em] text-foreground/50 mt-3">{p.status}</div>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -159,50 +199,46 @@ function Featured() {
 
 function Walkthrough() {
   return (
-    <section id="walkthrough" className="py-32 border-t border-border" style={{ background: "var(--gradient-hero)" }}>
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">3D Walkthroughs</div>
-            <h2 className="font-display text-5xl md:text-6xl text-balance">Step inside, even when the walls aren't up yet.</h2>
-            <p className="mt-6 text-lg text-muted-foreground max-w-lg">
-              Every TREGTIA property includes a fully navigable 3D model. Walk the halls, ride the lift,
-              stand on the balcony — and choose your home with absolute clarity.
+    <section id="walkthrough" className="py-28 border-y border-border bg-accent/40">
+      <div className="max-w-[1400px] mx-auto px-8">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-5">
+            <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">Feature · 3D Walkthroughs</div>
+            <h2 className="font-display text-5xl md:text-6xl text-balance text-ink">
+              Step inside, <em className="text-primary">even when</em> the walls aren't up yet.
+            </h2>
+            <p className="mt-6 text-foreground/75 max-w-md leading-relaxed">
+              Every TREGTIA property includes a fully navigable 3D model. Walk the halls,
+              ride the lift, stand on the balcony — and choose with absolute clarity.
             </p>
-            <div className="mt-10 space-y-5">
+            <div className="mt-10 space-y-6">
               {([
                 [Eye, "Photoreal renders", "Interior and exterior in cinematic detail."],
-                [Box, "Full 3D navigation", "WASD or touch — explore every floor freely."],
+                [Cuboid, "Full 3D navigation", "Move freely through every floor."],
                 [Compass, "Real orientation", "Sun studies and views from your actual unit."],
               ] as const).map(([Icon, t, d]) => (
-                <div key={t} className="flex gap-4">
-                  <div className="size-10 shrink-0 rounded-md bg-card border border-border flex items-center justify-center">
-                    <Icon className="size-4" />
-                  </div>
+                <div key={t} className="flex gap-4 border-t border-border pt-5">
+                  <Icon className="size-5 text-primary shrink-0 mt-1" />
                   <div>
-                    <div className="font-medium">{t}</div>
-                    <div className="text-sm text-muted-foreground">{d}</div>
+                    <div className="font-display text-xl text-ink">{t}</div>
+                    <div className="text-sm text-foreground/70 mt-1">{d}</div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          <div className="relative aspect-square rounded-2xl border border-border bg-card overflow-hidden" style={{ boxShadow: "var(--shadow-elegant)" }}>
-            <div className="absolute inset-0 bg-grid opacity-50" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-              <div className="size-20 rounded-full bg-foreground/10 backdrop-blur border border-border flex items-center justify-center">
-                <Play className="size-8 ml-1" />
+          <div className="lg:col-span-7">
+            <div className="relative aspect-[4/3] bg-card border border-border overflow-hidden" style={{ boxShadow: "var(--shadow-elegant)" }}>
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                <div className="size-20 rounded-full border border-primary text-primary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition cursor-pointer">
+                  <Play className="size-7 ml-1" />
+                </div>
+                <div className="text-xs text-foreground/50 uppercase tracking-[0.3em]">3D model embed</div>
               </div>
-              <div className="text-sm text-muted-foreground uppercase tracking-widest">3D model embed</div>
-            </div>
-            <div className="absolute top-4 left-4 flex gap-1.5">
-              <span className="size-2 rounded-full bg-destructive/70" />
-              <span className="size-2 rounded-full bg-muted-foreground/40" />
-              <span className="size-2 rounded-full bg-muted-foreground/40" />
-            </div>
-            <div className="absolute bottom-4 inset-x-4 flex justify-between text-xs text-muted-foreground">
-              <span>The Meridian · Floor 12</span>
-              <span>Interactive</span>
+              <div className="absolute top-5 left-5 right-5 flex justify-between text-[10px] uppercase tracking-[0.3em] text-foreground/60">
+                <span>The Meridian · Floor 12</span>
+                <span>Interactive</span>
+              </div>
             </div>
           </div>
         </div>
@@ -219,17 +255,19 @@ function Process() {
     ["04", "Delivery", "On-time handover with full documentation."],
   ];
   return (
-    <section id="process" className="py-32 max-w-7xl mx-auto px-6">
-      <div className="max-w-2xl mb-16">
-        <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">How we build</div>
-        <h2 className="font-display text-5xl md:text-6xl text-balance">From sketch to skyline.</h2>
+    <section id="process" className="py-28 max-w-[1400px] mx-auto px-8">
+      <div className="max-w-3xl mb-16">
+        <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">The Method</div>
+        <h2 className="font-display text-5xl md:text-7xl text-balance text-ink">
+          From sketch <em className="text-primary">to skyline.</em>
+        </h2>
       </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border rounded-lg overflow-hidden">
-        {steps.map(([n, t, d]) => (
-          <div key={n} className="bg-background p-8 hover:bg-card transition">
-            <div className="font-display text-muted-foreground text-sm">{n}</div>
-            <div className="font-display text-2xl mt-8">{t}</div>
-            <p className="text-sm text-muted-foreground mt-3">{d}</p>
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 border-t border-border">
+        {steps.map(([n, t, d], i) => (
+          <div key={n} className={`p-8 border-b border-border ${i < 3 ? "lg:border-r" : ""} hover:bg-accent/50 transition`}>
+            <div className="font-display italic text-primary text-2xl">{n}</div>
+            <div className="font-display text-3xl mt-10 text-ink">{t}</div>
+            <p className="text-sm text-foreground/70 mt-3 leading-relaxed">{d}</p>
           </div>
         ))}
       </div>
@@ -237,38 +275,75 @@ function Process() {
   );
 }
 
+function Editorial() {
+  return (
+    <section id="journal" className="py-28 border-y border-border bg-accent/30">
+      <div className="max-w-[1400px] mx-auto px-8">
+        <div className="flex items-end justify-between mb-14 border-b border-border pb-8">
+          <div>
+            <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">The Journal</div>
+            <h2 className="font-display text-5xl text-ink">Field notes &amp; <em className="text-primary">essays.</em></h2>
+          </div>
+          <a href="#" className="text-sm text-foreground/70 hover:text-primary hidden md:inline-flex items-center gap-1.5">
+            All entries <ArrowUpRight className="size-3.5" />
+          </a>
+        </div>
+        <div className="grid md:grid-cols-3 gap-10">
+          {[
+            ["Issue 03", "Designing for the climate of 2050", "On passive cooling, mass timber and the long now."],
+            ["Issue 02", "The 3D tour that closed a tower", "How an immersive preview converted 38 pre-sales in a weekend."],
+            ["Issue 01", "Why we walk every model", "Notes from the studio on testing every floor before pouring concrete."],
+          ].map(([t, h, d]) => (
+            <article key={h} className="group cursor-pointer">
+              <div className="aspect-[4/3] bg-card border border-border mb-5 relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-widest">Editorial image</div>
+              </div>
+              <div className="text-[10px] uppercase tracking-[0.3em] text-primary">{t}</div>
+              <h3 className="font-display text-2xl mt-3 text-ink group-hover:text-primary transition">{h}</h3>
+              <p className="text-sm text-foreground/70 mt-2 leading-relaxed">{d}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Contact() {
   return (
-    <section id="contact" className="py-32 border-t border-border">
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
-        <div>
-          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">Get in touch</div>
-          <h2 className="font-display text-5xl md:text-6xl text-balance">Let's design what's next.</h2>
-          <p className="mt-6 text-muted-foreground max-w-md">
-            Tell us about your project, schedule a private viewing, or request a 3D walkthrough of any property.
+    <section id="contact" className="py-28">
+      <div className="max-w-[1400px] mx-auto px-8 grid lg:grid-cols-12 gap-16">
+        <div className="lg:col-span-5">
+          <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">Correspondence</div>
+          <h2 className="font-display text-5xl md:text-6xl text-balance text-ink">
+            Let's design <em className="text-primary">what's next.</em>
+          </h2>
+          <p className="mt-6 text-foreground/75 max-w-md leading-relaxed">
+            Tell us about your project, schedule a private viewing, or request a
+            3D walkthrough of any property in our catalogue.
           </p>
-          <div className="mt-10 space-y-4 text-sm">
-            <div className="flex items-center gap-3"><Mail className="size-4 text-muted-foreground" /> hello@tregtia.com</div>
-            <div className="flex items-center gap-3"><Phone className="size-4 text-muted-foreground" /> +1 (555) 010-0420</div>
-            <div className="flex items-center gap-3"><MapPin className="size-4 text-muted-foreground" /> Studio HQ — to be added</div>
+          <div className="mt-10 space-y-4 text-sm border-t border-border pt-8">
+            <div className="flex items-center gap-3"><Mail className="size-4 text-primary" /> hello@tregtia.com</div>
+            <div className="flex items-center gap-3"><Phone className="size-4 text-primary" /> +1 (555) 010-0420</div>
+            <div className="flex items-center gap-3"><MapPin className="size-4 text-primary" /> Studio HQ — to be added</div>
           </div>
         </div>
-        <form className="bg-card border border-border rounded-lg p-8 space-y-5">
+        <form className="lg:col-span-7 bg-card border border-border p-10 space-y-6">
           {[
             ["Full name", "text", "Jane Doe"],
             ["Email", "email", "jane@company.com"],
             ["Project of interest", "text", "The Meridian"],
           ].map(([l, t, p]) => (
             <div key={l}>
-              <label className="text-xs uppercase tracking-widest text-muted-foreground">{l}</label>
-              <input type={t} placeholder={p} className="mt-2 w-full bg-transparent border-b border-border py-2 outline-none focus:border-foreground transition" />
+              <label className="text-[10px] uppercase tracking-[0.3em] text-foreground/60">{l}</label>
+              <input type={t} placeholder={p} className="mt-2 w-full bg-transparent border-b border-border py-3 outline-none focus:border-primary transition" />
             </div>
           ))}
           <div>
-            <label className="text-xs uppercase tracking-widest text-muted-foreground">Message</label>
-            <textarea rows={3} placeholder="Tell us more…" className="mt-2 w-full bg-transparent border-b border-border py-2 outline-none focus:border-foreground transition resize-none" />
+            <label className="text-[10px] uppercase tracking-[0.3em] text-foreground/60">Message</label>
+            <textarea rows={3} placeholder="Tell us more…" className="mt-2 w-full bg-transparent border-b border-border py-3 outline-none focus:border-primary transition resize-none" />
           </div>
-          <button type="button" className="w-full px-6 py-3 rounded-full bg-foreground text-background font-medium hover:opacity-90 transition flex items-center justify-center gap-2">
+          <button type="button" className="w-full px-6 py-4 bg-primary text-primary-foreground hover:bg-ink transition flex items-center justify-center gap-2 text-sm uppercase tracking-[0.2em]">
             Request information <ArrowUpRight className="size-4" />
           </button>
         </form>
@@ -279,20 +354,22 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border py-12">
-      <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-6">
-        <div className="relative">
-          <img
-            src={logoUrl}
-            alt="TREGTIA"
-            className="h-10 w-auto drop-shadow-[0_0_14px_rgba(96,165,250,0.5)]"
-          />
+    <footer className="border-t border-border py-14 bg-accent/30">
+      <div className="max-w-[1400px] mx-auto px-8">
+        <div className="grid md:grid-cols-3 gap-10 items-start pb-10 border-b border-border">
+          <img src={logoUrl} alt="TREGTIA" className="h-10 w-auto" />
+          <p className="font-display italic text-xl text-ink max-w-sm">
+            "We design buildings you can step inside long before the first stone."
+          </p>
+          <div className="flex md:justify-end gap-8 text-sm text-foreground/70">
+            <a href="#" className="hover:text-primary">Instagram</a>
+            <a href="#" className="hover:text-primary">LinkedIn</a>
+            <a href="#" className="hover:text-primary">Press</a>
+          </div>
         </div>
-        <div className="text-sm text-muted-foreground">© {new Date().getFullYear()} TREGTIA. All rights reserved.</div>
-        <div className="flex gap-6 text-sm text-muted-foreground">
-          <a href="#" className="hover:text-foreground">Instagram</a>
-          <a href="#" className="hover:text-foreground">LinkedIn</a>
-          <a href="#" className="hover:text-foreground">Press</a>
+        <div className="pt-6 flex flex-wrap items-center justify-between gap-4 text-xs uppercase tracking-[0.25em] text-foreground/60">
+          <div>© {new Date().getFullYear()} TREGTIA · All rights reserved</div>
+          <div>Issue Nº 01 · 2026</div>
         </div>
       </div>
     </footer>
