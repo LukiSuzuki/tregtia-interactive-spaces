@@ -35,7 +35,7 @@ function Nav() {
           <img
             src={logoUrl}
             alt="TREGTIA"
-            className="h-9 w-auto drop-shadow-[0_0_18px_rgba(96,165,250,0.55)]"
+            className="h-12 w-auto drop-shadow-[0_0_18px_rgba(96,165,250,0.55)]"
           />
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
@@ -285,7 +285,7 @@ function Footer() {
           <img
             src={logoUrl}
             alt="TREGTIA"
-            className="h-7 w-auto drop-shadow-[0_0_14px_rgba(96,165,250,0.5)]"
+            className="h-10 w-auto drop-shadow-[0_0_14px_rgba(96,165,250,0.5)]"
           />
         </div>
         <div className="text-sm text-muted-foreground">© {new Date().getFullYear()} TREGTIA. All rights reserved.</div>
