@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import logoAsset from "@/assets/tregtia-logo.png.asset.json";
+import logoUrl from "@/assets/tregtia-logo-blue.png";
 import { ArrowUpRight, Box, Compass, Eye, Play, MapPin, Mail, Phone } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -31,9 +31,12 @@ function Nav() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/60 border-b border-border">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2 relative">
-          <img src={logoAsset.url} alt="TREGTIA" className="h-7 w-auto" />
-          <div className="absolute inset-0 bg-[#3B82F6] mix-blend-color pointer-events-none" />
+        <a href="#top" className="flex items-center gap-2">
+          <img
+            src={logoUrl}
+            alt="TREGTIA"
+            className="h-9 w-auto drop-shadow-[0_0_18px_rgba(96,165,250,0.55)]"
+          />
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
           <a href="#properties" className="hover:text-foreground transition">Properties</a>
@@ -279,8 +282,11 @@ function Footer() {
     <footer className="border-t border-border py-12">
       <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-6">
         <div className="relative">
-          <img src={logoAsset.url} alt="TREGTIA" className="h-6 w-auto" />
-          <div className="absolute inset-0 bg-[#3B82F6] mix-blend-color pointer-events-none" />
+          <img
+            src={logoUrl}
+            alt="TREGTIA"
+            className="h-7 w-auto drop-shadow-[0_0_14px_rgba(96,165,250,0.5)]"
+          />
         </div>
         <div className="text-sm text-muted-foreground">© {new Date().getFullYear()} TREGTIA. All rights reserved.</div>
         <div className="flex gap-6 text-sm text-muted-foreground">
