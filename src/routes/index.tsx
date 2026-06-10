@@ -166,11 +166,11 @@ function Walkthrough() {
               stand on the balcony — and choose your home with absolute clarity.
             </p>
             <div className="mt-10 space-y-5">
-              {[
+              {([
                 [Eye, "Photoreal renders", "Interior and exterior in cinematic detail."],
                 [Box, "Full 3D navigation", "WASD or touch — explore every floor freely."],
                 [Compass, "Real orientation", "Sun studies and views from your actual unit."],
-              ].map(([Icon, t, d]) => (
+              ] as const).map(([Icon, t, d]) => (
                 <div key={t} className="flex gap-4">
                   <div className="size-10 shrink-0 rounded-md bg-card border border-border flex items-center justify-center">
                     <Icon className="size-4" />
