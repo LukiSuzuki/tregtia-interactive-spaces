@@ -828,3 +828,6 @@ body.view-control-buttons .viewControlButton {
 .viewControlButton-6 {
   margin-left: 105px;
 }
+
+body, #pano { background:#0a0a0a url('tiles/0-762652306148037_cropped_processed_by_imagy-1/1/f/0/0.jpg') center/cover no-repeat !important; }
+
