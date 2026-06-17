@@ -200,6 +200,7 @@ function Featured() {
 }
 
 function Walkthrough() {
+  const [open, setOpen] = useState(false);
   return (
     <section id="walkthrough" className="py-28 border-y border-border bg-accent/40">
       <div className="max-w-[1400px] mx-auto px-8">
