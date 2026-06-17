@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import logoUrl from "@/assets/tregtia-logo-blue.png";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { ArrowUpRight, Play, MapPin, Mail, Phone, Cuboid, Eye, Compass } from "lucide-react";
+import { ArrowUpRight, Play, MapPin, Mail, Phone, Cuboid, Eye, Compass, X } from "lucide-react";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 export const Route = createFileRoute("/")({
   head: () => ({
