@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import logoUrl from "@/assets/tregtia-logo-blue.png";
+import walkthroughPreview from "@/assets/walkthrough-preview.png.asset.json";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { ArrowUpRight, Play, MapPin, Mail, Phone, Cuboid, Eye, Compass } from "lucide-react";
 
