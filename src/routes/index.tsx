@@ -231,21 +231,46 @@ function Walkthrough() {
             </div>
           </div>
           <div className="lg:col-span-7">
-            <div className="relative aspect-[4/3] bg-card border border-border overflow-hidden" style={{ boxShadow: "var(--shadow-elegant)" }}>
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="group relative aspect-[4/3] w-full bg-card border border-border overflow-hidden text-left"
+              style={{ boxShadow: "var(--shadow-elegant)" }}
+            >
+              <img
+                src="/panorama/tiles/0-762652306148037_cropped_processed_by_imagy-1/preview.jpg"
+                alt="360° panorama preview"
+                className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                <div className="size-20 rounded-full border border-primary text-primary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition cursor-pointer">
+                <div className="size-20 rounded-full bg-background/90 border border-primary text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition">
                   <Play className="size-7 ml-1" />
                 </div>
-                <div className="text-xs text-foreground/50 uppercase tracking-[0.3em]">3D model embed</div>
+                <div className="text-xs text-background uppercase tracking-[0.3em] drop-shadow">Launch 360° walkthrough</div>
               </div>
-              <div className="absolute top-5 left-5 right-5 flex justify-between text-[10px] uppercase tracking-[0.3em] text-foreground/60">
+              <div className="absolute top-5 left-5 right-5 flex justify-between text-[10px] uppercase tracking-[0.3em] text-background/90">
                 <span>The Meridian · Floor 12</span>
-                <span>Interactive</span>
+                <span>Interactive 360°</span>
               </div>
-            </div>
+            </button>
           </div>
         </div>
       </div>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-w-[95vw] w-[95vw] h-[92vh] p-0 overflow-hidden sm:rounded-lg">
+          <DialogTitle className="sr-only">360° Walkthrough</DialogTitle>
+          {open && (
+            <iframe
+              src="/panorama/index.html"
+              title="360° Walkthrough"
+              className="w-full h-full border-0"
+              allow="fullscreen; accelerometer; gyroscope"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
