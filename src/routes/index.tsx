@@ -2,8 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import logoUrl from "@/assets/tregtia-logo-blue.png";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { ArrowUpRight, Play, MapPin, Mail, Phone, Cuboid, Eye, Compass, X } from "lucide-react";
-import { DialogClose } from "@radix-ui/react-dialog";
+import { ArrowUpRight, Play, MapPin, Mail, Phone, Cuboid, Eye, Compass } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -260,7 +259,7 @@ function Walkthrough() {
       </div>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-[95vw] w-[95vw] h-[92vh] p-0 overflow-hidden sm:rounded-lg [&>button]:hidden">
+        <DialogContent className="max-w-[95vw] w-[95vw] h-[92vh] p-0 overflow-hidden sm:rounded-lg">
           <DialogTitle className="sr-only">360° Walkthrough</DialogTitle>
           {open && (
             <iframe
@@ -270,10 +269,6 @@ function Walkthrough() {
               allow="fullscreen; accelerometer; gyroscope"
             />
           )}
-          <DialogClose className="absolute top-4 right-4 z-50 size-11 rounded-full bg-white text-ink shadow-lg flex items-center justify-center hover:bg-white/90 transition focus:outline-none focus:ring-2 focus:ring-primary">
-            <X className="size-5" />
-            <span className="sr-only">Close</span>
-          </DialogClose>
         </DialogContent>
       </Dialog>
     </section>
