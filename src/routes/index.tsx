@@ -239,7 +239,7 @@ function Walkthrough() {
               style={{ boxShadow: "var(--shadow-elegant)" }}
             >
               <img
-                src="/panorama/tiles/0-762652306148037_cropped_processed_by_imagy-1/preview.jpg"
+                src={walkthroughPreview.url}
                 alt="360° panorama preview"
                 className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition"
               />
