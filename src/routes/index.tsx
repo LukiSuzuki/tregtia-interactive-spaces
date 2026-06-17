@@ -260,7 +260,7 @@ function Walkthrough() {
       </div>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-[95vw] w-[95vw] h-[92vh] p-0 overflow-hidden sm:rounded-lg">
+        <DialogContent className="max-w-[95vw] w-[95vw] h-[92vh] p-0 overflow-hidden sm:rounded-lg [&>button]:hidden">
           <DialogTitle className="sr-only">360° Walkthrough</DialogTitle>
           {open && (
             <iframe
@@ -270,6 +270,10 @@ function Walkthrough() {
               allow="fullscreen; accelerometer; gyroscope"
             />
           )}
+          <DialogClose className="absolute top-4 right-4 z-50 size-11 rounded-full bg-white text-ink shadow-lg flex items-center justify-center hover:bg-white/90 transition focus:outline-none focus:ring-2 focus:ring-primary">
+            <X className="size-5" />
+            <span className="sr-only">Close</span>
+          </DialogClose>
         </DialogContent>
       </Dialog>
     </section>
