@@ -92,7 +92,7 @@ function Hero() {
             Hero render — add cover image
           </div>
           <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end text-xs uppercase tracking-[0.25em] text-background mix-blend-difference">
-            <span>The Meridian · Downtown</span>
+            <span>Kodrina · Downtown</span>
             <span>42 floors / 2026</span>
           </div>
         </div>
@@ -132,11 +132,11 @@ function Masthead() {
 }
 
 function Featured() {
-  const lead = { name: "The Meridian", loc: "Downtown · 42 floors", status: "Under construction", tag: "Residential", year: "2026" };
+  const lead = { name: "Kodrina", loc: "Downtown · 42 floors", status: "Under construction", tag: "Residential", year: "2026" };
   const others = [
-    { name: "Aurora Place", loc: "Harbor District · 28 floors", status: "Pre-sale", tag: "Mixed-Use", year: "2027" },
-    { name: "Sole Tower", loc: "Hillside · 16 floors", status: "Completed", tag: "Commercial", year: "2025" },
-    { name: "Quartier Nord", loc: "North Bank · 9 floors", status: "Concept", tag: "Residential", year: "2028" },
+    { name: "Apollonia A22", loc: "Harbor District · 28 floors", status: "Pre-sale", tag: "Mixed-Use", year: "2027" },
+    { name: "Lakrishte Blloku A6", loc: "Hillside · 16 floors", status: "Completed", tag: "Commercial", year: "2025" },
+    { name: "Arberia C3-F2", loc: "North Bank · 9 floors", status: "Concept", tag: "Residential", year: "2028" },
   ];
 
   return (
@@ -251,7 +251,7 @@ function Walkthrough() {
                 <div className="text-xs text-background uppercase tracking-[0.3em] drop-shadow">Launch 360° walkthrough</div>
               </div>
               <div className="absolute top-5 left-5 right-5 flex justify-between text-[10px] uppercase tracking-[0.3em] text-background/90">
-                <span>The Meridian · Floor 12</span>
+                <span>Kodrina · Floor 12</span>
                 <span>Interactive 360°</span>
               </div>
             </button>
@@ -361,7 +361,7 @@ function Contact() {
           {[
             ["Full name", "text", "Jane Doe"],
             ["Email", "email", "jane@company.com"],
-            ["Project of interest", "text", "The Meridian"],
+            ["Project of interest", "text", "Kodrina"],
           ].map(([l, t, p]) => (
             <div key={l}>
               <label className="text-[10px] uppercase tracking-[0.3em] text-foreground/60">{l}</label>
