@@ -163,9 +163,13 @@ function Featured() {
           className="lg:col-span-7 group cursor-pointer block"
         >
           <div className="aspect-[5/4] relative overflow-hidden bg-accent border border-border">
-            <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
-              Lead render
-            </div>
+            {lead.image ? (
+              <img src={lead.image} alt={lead.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
+                Lead render
+              </div>
+            )}
             <div className="absolute top-5 left-5 px-3 py-1 text-[10px] uppercase tracking-[0.25em] bg-background/90 backdrop-blur border border-border">
               {lead.status}
             </div>
@@ -189,9 +193,13 @@ function Featured() {
               className="group grid grid-cols-5 gap-5 cursor-pointer border-b border-border pb-8 last:border-0"
             >
               <div className="col-span-2 aspect-[4/5] bg-accent border border-border relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-widest">
-                  Render
-                </div>
+                {p.image ? (
+                  <img src={p.image} alt={p.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-widest">
+                    Render
+                  </div>
+                )}
               </div>
               <div className="col-span-3 flex flex-col justify-between">
                 <div>
