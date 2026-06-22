@@ -44,7 +44,7 @@ export const Route = createFileRoute("/properties/$slug")({
 function PropertyPage() {
   const { property } = Route.useLoaderData();
 
-  const exterior = Array.from({ length: 6 });
+  
   const interior = Array.from({ length: 6 });
 
   return (
@@ -83,14 +83,30 @@ function PropertyPage() {
             </div>
           </div>
 
-          {/* Cover */}
-          <div className="mt-16 aspect-[21/9] relative overflow-hidden border border-border bg-accent">
-            <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
-              Cover render — add image
+          {/* Cover + thumbnails */}
+          <div className="mt-16">
+            <div className="aspect-[21/9] relative overflow-hidden border border-border bg-accent">
+              <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
+                Cover render — add image
+              </div>
+            </div>
+            <div className="mt-4 grid grid-cols-5 gap-4">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  className="aspect-[4/3] relative overflow-hidden border border-border bg-accent hover:border-primary transition"
+                >
+                  <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-[10px] uppercase tracking-[0.3em]">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                </button>
+              ))}
             </div>
           </div>
         </div>
       </section>
+
 
       {/* Details */}
       <section className="py-24 max-w-[1400px] mx-auto px-8">
@@ -120,27 +136,8 @@ function PropertyPage() {
         </div>
       </section>
 
-      {/* Exterior gallery */}
-      <section className="py-24 border-t border-border bg-accent/30">
-        <div className="max-w-[1400px] mx-auto px-8">
-          <div className="flex items-end justify-between mb-10 border-b border-border pb-6">
-            <div>
-              <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-3">Catalogue · Exterior</div>
-              <h2 className="font-display text-4xl md:text-5xl text-ink">The building, outside.</h2>
-            </div>
-            <span className="text-xs uppercase tracking-[0.25em] text-foreground/50">{exterior.length} views</span>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {exterior.map((_, i) => (
-              <div key={i} className={`relative bg-card border border-border overflow-hidden ${i === 0 ? "md:col-span-2 md:row-span-2 aspect-square" : "aspect-[4/3]"}`}>
-                <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-[10px] uppercase tracking-[0.3em]">
-                  Exterior · {String(i + 1).padStart(2, "0")}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+
 
       {/* Interior gallery */}
       <section className="py-24">
