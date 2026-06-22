@@ -82,32 +82,30 @@ function ApartmentPage() {
           >
             <MapPin className="size-3" /> {property.name} · {property.loc}
           </Link>
-          <div className="grid lg:grid-cols-12 gap-10 items-end">
-            <div className="lg:col-span-8">
-              <div className="text-[11px] uppercase tracking-[0.3em] text-foreground/60 mb-3">
-                {apartment.type}
+          <div className="text-[11px] uppercase tracking-[0.3em] text-foreground/60 mb-3">
+            {apartment.type}
+          </div>
+          <h1 className="font-display text-[clamp(2.5rem,7vw,6rem)] leading-[0.95] text-ink">
+            {apartment.name}
+          </h1>
+
+          <div className="mt-16 grid lg:grid-cols-12 gap-8 items-start">
+            <div className="lg:col-span-9 aspect-[21/9] relative overflow-hidden border border-border bg-accent">
+              <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
+                Apartment cover — add image
               </div>
-              <h1 className="font-display text-[clamp(2.5rem,7vw,6rem)] leading-[0.95] text-ink">
-                {apartment.name}
-              </h1>
             </div>
-            <div className="lg:col-span-4 grid grid-cols-3 gap-4 text-center border-l-2 border-primary pl-5">
+            <div className="lg:col-span-3 flex flex-col justify-center h-full gap-10 border-l-2 border-primary pl-8">
               {[
                 ["Area", apartment.area],
                 ["Beds", apartment.bedrooms],
                 ["Floor", apartment.floor],
               ].map(([l, v]) => (
                 <div key={l}>
-                  <div className="text-[10px] uppercase tracking-[0.25em] text-foreground/60">{l}</div>
-                  <div className="font-display text-2xl text-ink mt-2">{v}</div>
+                  <div className="text-[10px] uppercase tracking-[0.25em] text-foreground/60 mb-2">{l}</div>
+                  <div className="font-display text-3xl text-ink">{v}</div>
                 </div>
               ))}
-            </div>
-          </div>
-
-          <div className="mt-16 aspect-[21/9] relative overflow-hidden border border-border bg-accent">
-            <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
-              Apartment cover — add image
             </div>
           </div>
         </div>
