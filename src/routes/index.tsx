@@ -360,7 +360,7 @@ function Contact() {
   return (
     <section id="contact" className="py-28">
       <div className="max-w-[1400px] mx-auto px-8 grid lg:grid-cols-12 gap-16">
-        <div className="lg:col-span-5">
+        <ScrollReveal className="lg:col-span-5">
           <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">Correspondence</div>
           <h2 className="font-display text-5xl md:text-6xl text-balance text-ink">
             Let's design <em className="text-primary">what's next.</em>
@@ -374,26 +374,28 @@ function Contact() {
             <div className="flex items-center gap-3"><Phone className="size-4 text-primary" /> +1 (555) 010-0420</div>
             <div className="flex items-center gap-3"><MapPin className="size-4 text-primary" /> Studio HQ — to be added</div>
           </div>
-        </div>
-        <form className="lg:col-span-7 bg-card border border-border p-10 space-y-6">
-          {[
-            ["Full name", "text", "Jane Doe"],
-            ["Email", "email", "jane@company.com"],
-            ["Project of interest", "text", "Kodrina"],
-          ].map(([l, t, p]) => (
-            <div key={l}>
-              <label className="text-[10px] uppercase tracking-[0.3em] text-foreground/60">{l}</label>
-              <input type={t} placeholder={p} className="mt-2 w-full bg-transparent border-b border-border py-3 outline-none focus:border-primary transition" />
+        </ScrollReveal>
+        <ScrollReveal className="lg:col-span-7" delay={0.2} direction="right">
+          <form className="bg-card border border-border p-10 space-y-6">
+            {[
+              ["Full name", "text", "Jane Doe"],
+              ["Email", "email", "jane@company.com"],
+              ["Project of interest", "text", "Kodrina"],
+            ].map(([l, t, p]) => (
+              <div key={l}>
+                <label className="text-[10px] uppercase tracking-[0.3em] text-foreground/60">{l}</label>
+                <input type={t} placeholder={p} className="mt-2 w-full bg-transparent border-b border-border py-3 outline-none focus:border-primary transition" />
+              </div>
+            ))}
+            <div>
+              <label className="text-[10px] uppercase tracking-[0.3em] text-foreground/60">Message</label>
+              <textarea rows={3} placeholder="Tell us more…" className="mt-2 w-full bg-transparent border-b border-border py-3 outline-none focus:border-primary transition resize-none" />
             </div>
-          ))}
-          <div>
-            <label className="text-[10px] uppercase tracking-[0.3em] text-foreground/60">Message</label>
-            <textarea rows={3} placeholder="Tell us more…" className="mt-2 w-full bg-transparent border-b border-border py-3 outline-none focus:border-primary transition resize-none" />
-          </div>
-          <button type="button" className="w-full px-6 py-4 bg-primary text-primary-foreground hover:bg-ink transition flex items-center justify-center gap-2 text-sm uppercase tracking-[0.2em]">
-            Request information <ArrowUpRight className="size-4" />
-          </button>
-        </form>
+            <button type="button" className="w-full px-6 py-4 bg-primary text-primary-foreground hover:bg-ink transition flex items-center justify-center gap-2 text-sm uppercase tracking-[0.2em]">
+              Request information <ArrowUpRight className="size-4" />
+            </button>
+          </form>
+        </ScrollReveal>
       </div>
     </section>
   );
@@ -401,24 +403,26 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border py-14 bg-accent/30">
-      <div className="max-w-[1400px] mx-auto px-8">
-        <div className="grid md:grid-cols-3 gap-10 items-start pb-10 border-b border-border">
-          <img src={logoUrl} alt="TREGTIA" className="h-10 w-auto" />
-          <p className="font-display italic text-xl text-ink max-w-sm">
-            "We design buildings you can step inside long before the first stone."
-          </p>
-          <div className="flex md:justify-end gap-8 text-sm text-foreground/70">
-            <a href="#" className="hover:text-primary">Instagram</a>
-            <a href="#" className="hover:text-primary">LinkedIn</a>
-            <a href="#" className="hover:text-primary">Press</a>
+    <ScrollReveal>
+      <footer className="border-t border-border py-14 bg-accent/30">
+        <div className="max-w-[1400px] mx-auto px-8">
+          <div className="grid md:grid-cols-3 gap-10 items-start pb-10 border-b border-border">
+            <img src={logoUrl} alt="TREGTIA" className="h-10 w-auto" />
+            <p className="font-display italic text-xl text-ink max-w-sm">
+              "We design buildings you can step inside long before the first stone."
+            </p>
+            <div className="flex md:justify-end gap-8 text-sm text-foreground/70">
+              <a href="#" className="hover:text-primary">Instagram</a>
+              <a href="#" className="hover:text-primary">LinkedIn</a>
+              <a href="#" className="hover:text-primary">Press</a>
+            </div>
+          </div>
+          <div className="pt-6 flex flex-wrap items-center justify-between gap-4 text-xs uppercase tracking-[0.25em] text-foreground/60">
+            <div>© {new Date().getFullYear()} TREGTIA · All rights reserved</div>
+            <div>Issue Nº 01 · 2026</div>
           </div>
         </div>
-        <div className="pt-6 flex flex-wrap items-center justify-between gap-4 text-xs uppercase tracking-[0.25em] text-foreground/60">
-          <div>© {new Date().getFullYear()} TREGTIA · All rights reserved</div>
-          <div>Issue Nº 01 · 2026</div>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </ScrollReveal>
   );
 }
