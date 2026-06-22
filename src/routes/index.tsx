@@ -160,76 +160,79 @@ function Featured() {
   return (
     <section id="properties" className="py-28 max-w-[1400px] mx-auto px-8">
       <div className="grid lg:grid-cols-12 gap-8 items-end mb-14 border-b border-border pb-10">
-        <div className="lg:col-span-8">
+        <ScrollReveal className="lg:col-span-8">
           <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">Featured · Nº 01</div>
           <h2 className="font-display text-5xl md:text-7xl text-balance text-ink">
             Current &amp; <em className="text-primary">upcoming</em> developments.
           </h2>
-        </div>
-        <div className="lg:col-span-4 lg:text-right">
+        </ScrollReveal>
+        <ScrollReveal className="lg:col-span-4 lg:text-right" delay={0.15}>
           <Link to="/properties" className="text-sm text-foreground/70 hover:text-primary inline-flex items-center gap-1.5 border-b border-border pb-1">
             View the full catalogue <ArrowUpRight className="size-3.5" />
           </Link>
-        </div>
+        </ScrollReveal>
       </div>
 
       {/* Magazine grid: 1 lead + 3 side */}
       <div className="grid lg:grid-cols-12 gap-8">
-        <Link
-          to="/properties/$slug"
-          params={{ slug: lead.slug }}
-          className="lg:col-span-7 group cursor-pointer block"
-        >
-          <div className="aspect-[5/4] relative overflow-hidden bg-accent border border-border">
-            {lead.image ? (
-              <img src={lead.image} alt={lead.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            ) : (
-              <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
-                Lead render
-              </div>
-            )}
-            <div className="absolute top-5 left-5 px-3 py-1 text-[10px] uppercase tracking-[0.25em] bg-background/90 backdrop-blur border border-border">
-              {lead.status}
-            </div>
-          </div>
-          <div className="mt-6 flex items-start justify-between gap-6">
-            <div>
-              <div className="text-[11px] uppercase tracking-[0.3em] text-primary">{lead.tag} · {lead.year}</div>
-              <h3 className="font-display text-4xl md:text-5xl mt-3 text-ink group-hover:text-primary transition">{lead.name}</h3>
-              <p className="text-foreground/70 mt-2">{lead.loc}</p>
-            </div>
-            <ArrowUpRight className="size-6 mt-3 text-primary shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </div>
-        </Link>
-
-        <div className="lg:col-span-5 space-y-8">
-          {others.map((p) => (
-            <Link
-              key={p.slug}
-              to="/properties/$slug"
-              params={{ slug: p.slug }}
-              className="group grid grid-cols-5 gap-5 cursor-pointer border-b border-border pb-8 last:border-0"
-            >
-              <div className="col-span-2 aspect-[4/5] bg-accent border border-border relative overflow-hidden">
-                {p.image ? (
-                  <img src={p.image} alt={p.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-widest">
-                    Render
-                  </div>
-                )}
-              </div>
-              <div className="col-span-3 flex flex-col justify-between">
-                <div>
-                  <div className="text-[10px] uppercase tracking-[0.3em] text-primary">{p.tag} · {p.year}</div>
-                  <h4 className="font-display text-2xl mt-2 text-ink group-hover:text-primary transition">{p.name}</h4>
-                  <p className="text-sm text-foreground/70 mt-1">{p.loc}</p>
+        <ScrollReveal className="lg:col-span-7">
+          <Link
+            to="/properties/$slug"
+            params={{ slug: lead.slug }}
+            className="group cursor-pointer block"
+          >
+            <div className="aspect-[5/4] relative overflow-hidden bg-accent border border-border">
+              {lead.image ? (
+                <img src={lead.image} alt={lead.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
+                  Lead render
                 </div>
-                <div className="text-[10px] uppercase tracking-[0.25em] text-foreground/50 mt-3">{p.status}</div>
+              )}
+              <div className="absolute top-5 left-5 px-3 py-1 text-[10px] uppercase tracking-[0.25em] bg-background/90 backdrop-blur border border-border">
+                {lead.status}
               </div>
-            </Link>
+            </div>
+            <div className="mt-6 flex items-start justify-between gap-6">
+              <div>
+                <div className="text-[11px] uppercase tracking-[0.3em] text-primary">{lead.tag} · {lead.year}</div>
+                <h3 className="font-display text-4xl md:text-5xl mt-3 text-ink group-hover:text-primary transition">{lead.name}</h3>
+                <p className="text-foreground/70 mt-2">{lead.loc}</p>
+              </div>
+              <ArrowUpRight className="size-6 mt-3 text-primary shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </div>
+          </Link>
+        </ScrollReveal>
+
+        <StaggerContainer className="lg:col-span-5 space-y-8" staggerDelay={0.15}>
+          {others.map((p) => (
+            <StaggerItem key={p.slug}>
+              <Link
+                to="/properties/$slug"
+                params={{ slug: p.slug }}
+                className="group grid grid-cols-5 gap-5 cursor-pointer border-b border-border pb-8 last:border-0"
+              >
+                <div className="col-span-2 aspect-[4/5] bg-accent border border-border relative overflow-hidden">
+                  {p.image ? (
+                    <img src={p.image} alt={p.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-widest">
+                      Render
+                    </div>
+                  )}
+                </div>
+                <div className="col-span-3 flex flex-col justify-between">
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.3em] text-primary">{p.tag} · {p.year}</div>
+                    <h4 className="font-display text-2xl mt-2 text-ink group-hover:text-primary transition">{p.name}</h4>
+                    <p className="text-sm text-foreground/70 mt-1">{p.loc}</p>
+                  </div>
+                  <div className="text-[10px] uppercase tracking-[0.25em] text-foreground/50 mt-3">{p.status}</div>
+                </div>
+              </Link>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
