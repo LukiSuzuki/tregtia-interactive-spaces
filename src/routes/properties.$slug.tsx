@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowUpRight, ArrowLeft, MapPin } from "lucide-react";
 import logoUrl from "@/assets/tregtia-logo-blue.png";
 import { getProperty, properties, type Property, type Apartment } from "@/lib/properties";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll-reveal";
 
 
 export const Route = createFileRoute("/properties/$slug")({
