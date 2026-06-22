@@ -3,7 +3,7 @@ import { ArrowUpRight, ArrowLeft } from "lucide-react";
 import logoUrl from "@/assets/tregtia-logo-blue.png";
 import { properties } from "@/lib/properties";
 
-export const Route = createFileRoute("/properties")({
+export const Route = createFileRoute("/properties/")({
   head: () => ({
     meta: [
       { title: "Properties — TREGTIA" },

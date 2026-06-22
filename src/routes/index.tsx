@@ -149,9 +149,9 @@ function Featured() {
           </h2>
         </div>
         <div className="lg:col-span-4 lg:text-right">
-          <a href="#" className="text-sm text-foreground/70 hover:text-primary inline-flex items-center gap-1.5 border-b border-border pb-1">
+          <Link to="/properties" className="text-sm text-foreground/70 hover:text-primary inline-flex items-center gap-1.5 border-b border-border pb-1">
             View the full catalogue <ArrowUpRight className="size-3.5" />
-          </a>
+          </Link>
         </div>
       </div>
 
