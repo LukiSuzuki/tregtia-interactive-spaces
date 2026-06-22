@@ -1,7 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowUpRight, ArrowLeft, MapPin } from "lucide-react";
 import logoUrl from "@/assets/tregtia-logo-blue.png";
-import { getProperty, properties } from "@/lib/properties";
+import { getProperty, properties, type Property, type Apartment } from "@/lib/properties";
+
 
 export const Route = createFileRoute("/properties/$slug")({
   head: ({ params }) => {
@@ -42,7 +43,8 @@ export const Route = createFileRoute("/properties/$slug")({
 });
 
 function PropertyPage() {
-  const { property } = Route.useLoaderData();
+  const { property } = Route.useLoaderData() as { property: Property };
+
 
   
   
@@ -150,7 +152,7 @@ function PropertyPage() {
             <span className="text-xs uppercase tracking-[0.25em] text-foreground/50">{property.apartments.length} residences</span>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {property.apartments.map((apt) => (
+            {property.apartments.map((apt: Apartment) => (
               <Link
                 key={apt.id}
                 to="/properties/$slug/apartments/$apartmentId"

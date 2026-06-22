@@ -3,7 +3,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpRight, Play, MapPin } from "lucide-react";
 import logoUrl from "@/assets/tregtia-logo-blue.png";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { getApartment } from "@/lib/properties";
+import { getApartment, type Property, type Apartment } from "@/lib/properties";
 
 export const Route = createFileRoute("/properties/$slug/apartments/$apartmentId")({
   head: ({ params }) => {
@@ -48,11 +48,12 @@ export const Route = createFileRoute("/properties/$slug/apartments/$apartmentId"
 });
 
 function ApartmentPage() {
-  const { property, apartment } = Route.useLoaderData();
+  const { property, apartment } = Route.useLoaderData() as { property: Property; apartment: Apartment };
   const [tourOpen, setTourOpen] = useState(false);
 
   const gallery = Array.from({ length: 6 });
-  const siblings = property.apartments.filter((a) => a.id !== apartment.id);
+  const siblings = property.apartments.filter((a: Apartment) => a.id !== apartment.id);
+
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -202,7 +203,7 @@ function ApartmentPage() {
             <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">More in {property.name}</div>
             <h2 className="font-display text-4xl md:text-5xl text-ink mb-10">Other residences.</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {siblings.map((a) => (
+              {siblings.map((a: Apartment) => (
                 <Link
                   key={a.id}
                   to="/properties/$slug/apartments/$apartmentId"
