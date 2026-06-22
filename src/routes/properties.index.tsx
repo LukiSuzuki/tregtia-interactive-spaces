@@ -53,9 +53,13 @@ function PropertiesCatalogue() {
               className="group block border border-border bg-card hover:border-primary transition"
             >
               <div className="aspect-[4/3] bg-accent relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-[0.3em]">
-                  Render
-                </div>
+                {p.image ? (
+                  <img src={p.image} alt={p.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-[0.3em]">
+                    Render
+                  </div>
+                )}
               </div>
               <div className="p-6 flex items-start justify-between gap-4">
                 <div>

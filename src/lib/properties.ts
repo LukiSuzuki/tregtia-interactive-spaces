@@ -20,8 +20,20 @@ export type Property = {
   investor: string;
   objectDestination: string;
   description: string;
+  image?: string;
   apartments: Apartment[];
 };
+
+const buildingAssets = import.meta.glob<{ default: { url: string } }>(
+  "../assets/buildings/*.jpg.asset.json",
+  { eager: true },
+);
+const buildingImageBySlug: Record<string, string> = {};
+for (const [path, mod] of Object.entries(buildingAssets)) {
+  const slug = path.split("/").pop()!.replace(".jpg.asset.json", "");
+  buildingImageBySlug[slug] = mod.default.url;
+}
+
 
 const defaultApartments: Apartment[] = [
   { id: "01", name: "Residence 01", type: "Studio", area: "48 m²", bedrooms: "0", floor: "—" },
@@ -147,6 +159,7 @@ const additionalBase: Omit<Property, "apartments">[] = additionalNames.map((name
 
 export const properties: Property[] = [...propertyBase, ...additionalBase].map((p) => ({
   ...p,
+  image: buildingImageBySlug[p.slug],
   apartments: defaultApartments,
 }));
 

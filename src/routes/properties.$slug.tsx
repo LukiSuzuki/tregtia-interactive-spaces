@@ -88,9 +88,13 @@ function PropertyPage() {
           {/* Cover + thumbnails */}
           <div className="mt-16">
             <div className="aspect-[21/9] relative overflow-hidden border border-border bg-accent">
-              <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
-                Cover render — add image
-              </div>
+              {property.image ? (
+                <img src={property.image} alt={property.name} className="absolute inset-0 w-full h-full object-cover" />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
+                  Cover render — add image
+                </div>
+              )}
             </div>
             <div className="mt-4 grid grid-cols-5 gap-4">
               {Array.from({ length: 5 }).map((_, i) => (
@@ -191,9 +195,13 @@ function PropertyPage() {
                 className="group block border border-border bg-card hover:border-primary transition"
               >
                 <div className="aspect-[4/3] bg-accent relative overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-[0.3em]">
-                    Render
-                  </div>
+                  {p.image ? (
+                    <img src={p.image} alt={p.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-[0.3em]">
+                      Render
+                    </div>
+                  )}
                 </div>
                 <div className="p-6 flex items-start justify-between gap-4">
                   <div>
