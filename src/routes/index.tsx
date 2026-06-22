@@ -88,9 +88,11 @@ function Hero() {
         </div>
 
         <div className="mt-20 aspect-[21/9] relative overflow-hidden border border-border bg-accent">
-          <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
-            Hero render — add cover image
-          </div>
+          <img
+            src={heroRender.url}
+            alt="Kodrina residential complex aerial render"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
           <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end text-xs uppercase tracking-[0.25em] text-background mix-blend-difference">
             <span>Kodrina · Downtown</span>
             <span>42 floors / 2026</span>
