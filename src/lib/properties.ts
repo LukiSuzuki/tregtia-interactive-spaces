@@ -14,7 +14,7 @@ export type Property = {
   status: string;
   tag: string;
   year: string;
-  floors: string;
+  floors?: string;
   projectName: string;
   lokacion: string;
   investor: string;
