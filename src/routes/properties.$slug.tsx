@@ -121,13 +121,13 @@ function PropertyPage() {
       {/* Details */}
       <section className="py-24 max-w-[1400px] mx-auto px-8">
         <div className="grid lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-4">
+          <ScrollReveal className="lg:col-span-4">
             <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">Project Details</div>
             <h2 className="font-display text-4xl md:text-5xl text-ink">
               Building <em className="text-primary">specifications</em>.
             </h2>
-          </div>
-          <dl className="lg:col-span-8 border-t border-border">
+          </ScrollReveal>
+          <StaggerContainer className="lg:col-span-8 border-t border-border" staggerDelay={0.08}>
             {[
               ["Project Name", property.projectName],
               ["Lokacion", property.lokacion],
@@ -137,12 +137,12 @@ function PropertyPage() {
               ["Status", property.status],
               ["Year", property.year],
             ].filter((item): item is [string, string] => item !== null).map(([label, value]) => (
-              <div key={label} className="grid grid-cols-3 gap-6 py-5 border-b border-border">
+              <StaggerItem key={label} className="grid grid-cols-3 gap-6 py-5 border-b border-border">
                 <dt className="text-[11px] uppercase tracking-[0.25em] text-foreground/60">{label}</dt>
                 <dd className="col-span-2 text-ink font-display text-xl">{value}</dd>
-              </div>
+              </StaggerItem>
             ))}
-          </dl>
+          </StaggerContainer>
         </div>
       </section>
 
