@@ -95,9 +95,9 @@ function Hero() {
             alt="Kodrina residential complex aerial render"
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end text-xs uppercase tracking-[0.25em] text-background mix-blend-difference">
-            <span>Kodrina · Downtown</span>
-            <span>42 floors / 2026</span>
+          <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end text-xs uppercase tracking-[0.25em] text-background drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
+            <span className="bg-black/50 px-3 py-1.5 backdrop-blur-sm">Kodrina · Downtown</span>
+            <span className="bg-black/50 px-3 py-1.5 backdrop-blur-sm">42 floors / 2026</span>
           </div>
         </div>
 
