@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PropertiesIndexRouteImport } from './routes/properties.index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
 import { Route as PropertiesSlugApartmentsApartmentIdRouteImport } from './routes/properties.$slug_.apartments.$apartmentId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropertiesIndexRoute = PropertiesIndexRouteImport.update({
+  id: '/properties/',
+  path: '/properties/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PropertiesSlugRoute = PropertiesSlugRouteImport.update({
@@ -33,17 +39,20 @@ const PropertiesSlugApartmentsApartmentIdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/properties/': typeof PropertiesIndexRoute
   '/properties/$slug/apartments/$apartmentId': typeof PropertiesSlugApartmentsApartmentIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/properties': typeof PropertiesIndexRoute
   '/properties/$slug/apartments/$apartmentId': typeof PropertiesSlugApartmentsApartmentIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/properties/': typeof PropertiesIndexRoute
   '/properties/$slug_/apartments/$apartmentId': typeof PropertiesSlugApartmentsApartmentIdRoute
 }
 export interface FileRouteTypes {
@@ -51,19 +60,26 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/properties/$slug'
+    | '/properties/'
     | '/properties/$slug/apartments/$apartmentId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/properties/$slug' | '/properties/$slug/apartments/$apartmentId'
+  to:
+    | '/'
+    | '/properties/$slug'
+    | '/properties'
+    | '/properties/$slug/apartments/$apartmentId'
   id:
     | '__root__'
     | '/'
     | '/properties/$slug'
+    | '/properties/'
     | '/properties/$slug_/apartments/$apartmentId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
+  PropertiesIndexRoute: typeof PropertiesIndexRoute
   PropertiesSlugApartmentsApartmentIdRoute: typeof PropertiesSlugApartmentsApartmentIdRoute
 }
 
@@ -74,6 +90,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/properties/': {
+      id: '/properties/'
+      path: '/properties'
+      fullPath: '/properties/'
+      preLoaderRoute: typeof PropertiesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/properties/$slug': {
@@ -96,6 +119,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
+  PropertiesIndexRoute: PropertiesIndexRoute,
   PropertiesSlugApartmentsApartmentIdRoute:
     PropertiesSlugApartmentsApartmentIdRoute,
 }
