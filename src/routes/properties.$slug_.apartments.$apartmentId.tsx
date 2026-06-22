@@ -95,11 +95,14 @@ function ApartmentPage() {
                 Apartment cover — add image
               </div>
             </div>
-            <div className="lg:col-span-3 flex flex-col justify-center h-full gap-10 border-l-2 border-primary pl-8">
+            <div className="lg:col-span-3 flex flex-col justify-center h-full gap-8 border-l-2 border-primary pl-8">
               {[
+                ["Unit", apartment.name],
+                ["Type", apartment.type],
                 ["Area", apartment.area],
-                ["Beds", apartment.bedrooms],
+                ["Bedrooms", apartment.bedrooms],
                 ["Floor", apartment.floor],
+                ["Building", property.name],
               ].map(([l, v]) => (
                 <div key={l}>
                   <div className="text-[10px] uppercase tracking-[0.25em] text-foreground/60 mb-2">{l}</div>
@@ -145,32 +148,6 @@ function ApartmentPage() {
         </div>
       </section>
 
-      {/* Details */}
-      <section className="py-24 max-w-[1400px] mx-auto px-8">
-        <div className="grid lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-4">
-            <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">Apartment Details</div>
-            <h2 className="font-display text-4xl md:text-5xl text-ink">
-              Unit <em className="text-primary">specifications</em>.
-            </h2>
-          </div>
-          <dl className="lg:col-span-8 border-t border-border">
-            {[
-              ["Unit", apartment.name],
-              ["Type", apartment.type],
-              ["Area", apartment.area],
-              ["Bedrooms", apartment.bedrooms],
-              ["Floor", apartment.floor],
-              ["Building", property.name],
-            ].map(([label, value]) => (
-              <div key={label} className="grid grid-cols-3 gap-6 py-5 border-b border-border">
-                <dt className="text-[11px] uppercase tracking-[0.25em] text-foreground/60">{label}</dt>
-                <dd className="col-span-2 text-ink font-display text-xl">{value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
 
       {/* Interior gallery */}
       <section className="py-24 border-t border-border">
