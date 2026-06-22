@@ -1,3 +1,12 @@
+export type Apartment = {
+  id: string;
+  name: string;
+  type: string;
+  area: string;
+  bedrooms: string;
+  floor: string;
+};
+
 export type Property = {
   slug: string;
   name: string;
@@ -11,7 +20,18 @@ export type Property = {
   investor: string;
   objectDestination: string;
   description: string;
+  apartments: Apartment[];
 };
+
+const defaultApartments: Apartment[] = [
+  { id: "01", name: "Residence 01", type: "Studio", area: "48 m²", bedrooms: "0", floor: "—" },
+  { id: "02", name: "Residence 02", type: "One-bedroom", area: "62 m²", bedrooms: "1", floor: "—" },
+  { id: "03", name: "Residence 03", type: "Two-bedroom", area: "84 m²", bedrooms: "2", floor: "—" },
+  { id: "04", name: "Residence 04", type: "Two-bedroom corner", area: "92 m²", bedrooms: "2", floor: "—" },
+  { id: "05", name: "Residence 05", type: "Three-bedroom", area: "118 m²", bedrooms: "3", floor: "—" },
+  { id: "06", name: "Penthouse", type: "Penthouse", area: "210 m²", bedrooms: "4", floor: "—" },
+];
+
 
 export const properties: Property[] = [
   {
@@ -74,7 +94,15 @@ export const properties: Property[] = [
     description:
       "An intimate residential project on the north bank — boutique in scale, generous in light, designed around a planted central courtyard.",
   },
-];
+].map((p) => ({ ...p, apartments: defaultApartments }));
 
 export const getProperty = (slug: string) =>
   properties.find((p) => p.slug === slug);
+
+export const getApartment = (propertySlug: string, apartmentId: string) => {
+  const property = getProperty(propertySlug);
+  const apartment = property?.apartments.find((a) => a.id === apartmentId);
+  if (!property || !apartment) return null;
+  return { property, apartment };
+};
+
