@@ -5,7 +5,7 @@ import logoUrl from "@/assets/tregtia-logo-blue.png";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { getApartment, type Property, type Apartment } from "@/lib/properties";
 
-export const Route = createFileRoute("/properties/$slug/apartments/$apartmentId")({
+export const Route = createFileRoute("/properties/$slug_/apartments/$apartmentId")({
   head: ({ params }) => {
     const result = getApartment(params.slug, params.apartmentId);
     const title = result
