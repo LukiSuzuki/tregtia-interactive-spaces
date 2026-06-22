@@ -78,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "TREGTIA — Architecture, Reimagined" },
-      { name: "description", content: "TREGTIA designs and delivers landmark buildings with immersive 3D walkthroughs — explore properties before they're built." },
+      { name: "description", content: "TREGTIA designs and delivers landmark buildings — explore properties before they're built." },
       { property: "og:title", content: "TREGTIA — Architecture, Reimagined" },
       { property: "og:description", content: "Explore landmark buildings in immersive 3D, even before construction is complete." },
       { property: "og:type", content: "website" },
