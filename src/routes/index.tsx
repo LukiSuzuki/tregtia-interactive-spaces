@@ -336,21 +336,21 @@ function Process() {
   ];
   return (
     <section id="process" className="py-28 max-w-[1400px] mx-auto px-8">
-      <div className="max-w-3xl mb-16">
+      <ScrollReveal className="max-w-3xl mb-16">
         <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">The Method</div>
         <h2 className="font-display text-5xl md:text-7xl text-balance text-ink">
           From sketch <em className="text-primary">to skyline.</em>
         </h2>
-      </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 border-t border-border">
+      </ScrollReveal>
+      <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 border-t border-border" staggerDelay={0.12}>
         {steps.map(([n, t, d], i) => (
-          <div key={n} className={`p-8 border-b border-border ${i < 3 ? "lg:border-r" : ""} hover:bg-accent/50 transition`}>
+          <StaggerItem key={n} className={`p-8 border-b border-border ${i < 3 ? "lg:border-r" : ""} hover:bg-accent/50 transition`}>
             <div className="font-display italic text-primary text-2xl">{n}</div>
             <div className="font-display text-3xl mt-10 text-ink">{t}</div>
             <p className="text-sm text-foreground/70 mt-3 leading-relaxed">{d}</p>
-          </div>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
     </section>
   );
 }
