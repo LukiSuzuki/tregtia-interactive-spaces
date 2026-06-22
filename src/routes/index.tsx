@@ -42,7 +42,7 @@ function Nav() {
           <a href="#properties" className="hover:text-primary transition">Properties</a>
           <a href="#walkthrough" className="hover:text-primary transition">3D Tours</a>
           <a href="#process" className="hover:text-primary transition">Process</a>
-          <a href="#journal" className="hover:text-primary transition">Journal</a>
+          
           <a href="#contact" className="hover:text-primary transition">Contact</a>
         </nav>
         <a href="#contact" className="text-[13px] px-5 py-2.5 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition flex items-center gap-1.5">
