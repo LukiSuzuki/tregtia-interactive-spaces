@@ -132,7 +132,7 @@ function PropertyPage() {
               property.floors ? ["Floors", property.floors] : null,
               ["Status", property.status],
               ["Year", property.year],
-            ].filter(Boolean).map(([label, value]) => (
+            ].filter((item): item is [string, string] => item !== null).map(([label, value]) => (
               <div key={label} className="grid grid-cols-3 gap-6 py-5 border-b border-border">
                 <dt className="text-[11px] uppercase tracking-[0.25em] text-foreground/60">{label}</dt>
                 <dd className="col-span-2 text-ink font-display text-xl">{value}</dd>
