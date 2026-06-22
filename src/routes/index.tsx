@@ -24,7 +24,7 @@ function Index() {
       <Featured />
       <Walkthrough />
       <Process />
-      <Editorial />
+      
       <Contact />
       <Footer />
     </div>
