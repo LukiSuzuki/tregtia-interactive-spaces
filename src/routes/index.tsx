@@ -163,9 +163,13 @@ function Featured() {
           className="lg:col-span-7 group cursor-pointer block"
         >
           <div className="aspect-[5/4] relative overflow-hidden bg-accent border border-border">
-            <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
-              Lead render
-            </div>
+            {lead.image ? (
+              <img src={lead.image} alt={lead.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
+                Lead render
+              </div>
+            )}
             <div className="absolute top-5 left-5 px-3 py-1 text-[10px] uppercase tracking-[0.25em] bg-background/90 backdrop-blur border border-border">
               {lead.status}
             </div>
