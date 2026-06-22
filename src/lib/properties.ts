@@ -33,7 +33,7 @@ const defaultApartments: Apartment[] = [
 ];
 
 
-export const properties: Property[] = ([
+const propertyBase: Omit<Property, "apartments">[] = [
   {
     slug: "kodrina",
     name: "Kodrina",
@@ -94,7 +94,13 @@ export const properties: Property[] = ([
     description:
       "An intimate residential project on the north bank — boutique in scale, generous in light, designed around a planted central courtyard.",
   },
-] as Omit<Property, "apartments">[]).map((p) => ({ ...p, apartments: defaultApartments }));
+];
+
+export const properties: Property[] = propertyBase.map((p) => ({
+  ...p,
+  apartments: defaultApartments,
+}));
+
 
 export const getProperty = (slug: string) =>
   properties.find((p) => p.slug === slug);
