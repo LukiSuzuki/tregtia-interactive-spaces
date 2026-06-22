@@ -159,6 +159,7 @@ const additionalBase: Omit<Property, "apartments">[] = additionalNames.map((name
 
 export const properties: Property[] = [...propertyBase, ...additionalBase].map((p) => ({
   ...p,
+  image: buildingImageBySlug[p.slug],
   apartments: defaultApartments,
 }));
 
