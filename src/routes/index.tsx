@@ -59,63 +59,79 @@ function Nav() {
 }
 
 function Hero() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+
   return (
-    <section id="top" className="relative pt-32 pb-16 border-b border-border" style={{ background: "var(--gradient-hero)" }}>
+    <section id="top" ref={heroRef} className="relative pt-32 pb-16 border-b border-border" style={{ background: "var(--gradient-hero)" }}>
       <div className="max-w-[1400px] mx-auto px-8">
-        <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.3em] text-primary mb-10">
-          <span className="h-px w-10 bg-primary" />
-        </div>
+        <ScrollReveal>
+          <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.3em] text-primary mb-10">
+            <span className="h-px w-10 bg-primary" />
+          </div>
+        </ScrollReveal>
 
         <div className="grid lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-8">
-            <h1 className="font-display text-[clamp(3rem,9vw,8rem)] leading-[0.92] text-ink">
-              Architecture<br />
-              <em className="text-primary font-normal">re&shy;imagined</em>{" "}
-              before the first stone.
-            </h1>
+            <ScrollReveal delay={0.1}>
+              <h1 className="font-display text-[clamp(3rem,9vw,8rem)] leading-[0.92] text-ink">
+                Architecture<br />
+                <em className="text-primary font-normal">re&shy;imagined</em>{" "}
+                before the first stone.
+              </h1>
+            </ScrollReveal>
           </div>
           <div className="lg:col-span-4">
-            <p className="text-lg text-foreground/75 leading-relaxed border-l-2 border-primary pl-5">
-              TREGTIA designs landmark residences and commercial buildings —
-              and lets you walk through every floor in immersive 3D long before
-              construction is complete.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#properties" className="px-6 py-3 bg-primary text-primary-foreground hover:bg-ink transition flex items-center gap-2 text-sm">
-                Explore properties <ArrowUpRight className="size-4" />
-              </a>
-              <a href="#walkthrough" className="px-6 py-3 border border-border hover:border-primary hover:text-primary transition flex items-center gap-2 text-sm">
-                <Play className="size-3.5" /> Watch 3D demo
-              </a>
+            <ScrollReveal delay={0.2}>
+              <p className="text-lg text-foreground/75 leading-relaxed border-l-2 border-primary pl-5">
+                TREGTIA designs landmark residences and commercial buildings —
+                and lets you walk through every floor in immersive 3D long before
+                construction is complete.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href="#properties" className="px-6 py-3 bg-primary text-primary-foreground hover:bg-ink transition flex items-center gap-2 text-sm">
+                  Explore properties <ArrowUpRight className="size-4" />
+                </a>
+                <a href="#walkthrough" className="px-6 py-3 border border-border hover:border-primary hover:text-primary transition flex items-center gap-2 text-sm">
+                  <Play className="size-3.5" /> Watch 3D demo
+                </a>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+
+        <ScrollReveal delay={0.3}>
+          <div className="mt-20 aspect-[21/9] relative overflow-hidden border border-border bg-accent">
+            <motion.img
+              src={heroRender.url}
+              alt="Kodrina residential complex aerial render"
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ y: heroY }}
+            />
+            <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end text-xs uppercase tracking-[0.25em] text-background drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
+              <span className="bg-black/50 px-3 py-1.5 backdrop-blur-sm">Kodrina · Downtown</span>
+              <span className="bg-black/50 px-3 py-1.5 backdrop-blur-sm">2026</span>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
-        <div className="mt-20 aspect-[21/9] relative overflow-hidden border border-border bg-accent">
-          <img
-            src={heroRender.url}
-            alt="Kodrina residential complex aerial render"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end text-xs uppercase tracking-[0.25em] text-background drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
-            <span className="bg-black/50 px-3 py-1.5 backdrop-blur-sm">Kodrina · Downtown</span>
-            <span className="bg-black/50 px-3 py-1.5 backdrop-blur-sm">2026</span>
-          </div>
-        </div>
-
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-10 border-t border-border pt-10">
+        <StaggerContainer className="mt-12 grid grid-cols-2 ?? md:grid-cols-4 gap-10 border-t border-border pt-10">
           {[
             ["120+", "Projects delivered"],
             ["18", "Cities"],
             ["1.4M m²", "Built area"],
             ["100%", "3D-previewed"],
           ].map(([n, l]) => (
-            <div key={l}>
+            <StaggerItem key={l}>
               <div className="font-display text-4xl text-ink">{n}</div>
               <div className="text-xs uppercase tracking-[0.2em] text-foreground/60 mt-2">{l}</div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
