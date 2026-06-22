@@ -95,11 +95,14 @@ function ApartmentPage() {
                 Apartment cover — add image
               </div>
             </div>
-            <div className="lg:col-span-3 flex flex-col justify-center h-full gap-10 border-l-2 border-primary pl-8">
+            <div className="lg:col-span-3 flex flex-col justify-center h-full gap-8 border-l-2 border-primary pl-8">
               {[
+                ["Unit", apartment.name],
+                ["Type", apartment.type],
                 ["Area", apartment.area],
-                ["Beds", apartment.bedrooms],
+                ["Bedrooms", apartment.bedrooms],
                 ["Floor", apartment.floor],
+                ["Building", property.name],
               ].map(([l, v]) => (
                 <div key={l}>
                   <div className="text-[10px] uppercase tracking-[0.25em] text-foreground/60 mb-2">{l}</div>
