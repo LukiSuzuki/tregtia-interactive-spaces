@@ -67,27 +67,29 @@ function PropertyPage() {
       {/* Hero */}
       <section className="pt-32 pb-16 border-b border-border" style={{ background: "var(--gradient-hero)" }}>
         <div className="max-w-[1400px] mx-auto px-8">
-          <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-6">
-            {property.tag} · {property.year} · {property.status}
-          </div>
-          <div className="grid lg:grid-cols-12 gap-10 items-end">
-            <div className="lg:col-span-8">
-              <h1 className="font-display text-[clamp(2.5rem,7vw,6rem)] leading-[0.95] text-ink">
-                {property.name}
-              </h1>
-              <div className="mt-6 flex items-center gap-2 text-foreground/70">
-                <MapPin className="size-4 text-primary" /> {property.loc}
+          <ScrollReveal>
+            <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-6">
+              {property.tag} · {property.year} · {property.status}
+            </div>
+            <div className="grid lg:grid-cols-12 gap-10 items-end">
+              <div className="lg:col-span-8">
+                <h1 className="font-display text-[clamp(2.5rem,7vw,6rem)] leading-[0.95] text-ink">
+                  {property.name}
+                </h1>
+                <div className="mt-6 flex items-center gap-2 text-foreground/70">
+                  <MapPin className="size-4 text-primary" /> {property.loc}
+                </div>
+              </div>
+              <div className="lg:col-span-4">
+                <p className="text-lg text-foreground/75 leading-relaxed border-l-2 border-primary pl-5">
+                  {property.description}
+                </p>
               </div>
             </div>
-            <div className="lg:col-span-4">
-              <p className="text-lg text-foreground/75 leading-relaxed border-l-2 border-primary pl-5">
-                {property.description}
-              </p>
-            </div>
-          </div>
+          </ScrollReveal>
 
           {/* Cover + thumbnails */}
-          <div className="mt-16">
+          <ScrollReveal delay={0.15} className="mt-16">
             <div className="aspect-[21/9] relative overflow-hidden border border-border bg-accent">
               {property.image ? (
                 <img src={property.image} alt={property.name} className="absolute inset-0 w-full h-full object-cover" />
@@ -97,20 +99,21 @@ function PropertyPage() {
                 </div>
               )}
             </div>
-            <div className="mt-4 grid grid-cols-5 gap-4">
-              {Array.from({ length: 5 }).map((_, i) => (
+          </ScrollReveal>
+          <StaggerContainer className="mt-4 grid grid-cols-5 gap-4" staggerDelay={0.06}>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <StaggerItem key={i}>
                 <button
-                  key={i}
                   type="button"
-                  className="aspect-[4/3] relative overflow-hidden border border-border bg-accent hover:border-primary transition"
+                  className="aspect-[4/3] relative overflow-hidden border border-border bg-accent hover:border-primary transition w-full"
                 >
                   <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-[10px] uppercase tracking-[0.3em]">
                     {String(i + 1).padStart(2, "0")}
                   </div>
                 </button>
-              ))}
-            </div>
-          </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
       </section>
 
