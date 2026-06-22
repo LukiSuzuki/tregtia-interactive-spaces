@@ -137,7 +137,7 @@ function Masthead() {
 
 function Featured() {
   const lead = properties[0];
-  const others = properties.slice(1);
+  const others = properties.slice(1, 3);
 
   return (
     <section id="properties" className="py-28 max-w-[1400px] mx-auto px-8">
