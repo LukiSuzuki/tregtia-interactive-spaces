@@ -14,7 +14,7 @@ export type Property = {
   status: string;
   tag: string;
   year: string;
-  floors: string;
+  floors?: string;
   projectName: string;
   lokacion: string;
   investor: string;
@@ -49,11 +49,11 @@ const propertyBase: Omit<Property, "apartments">[] = [
   {
     slug: "kodrina",
     name: "Kodrina",
-    loc: "Downtown · 42 floors",
+    loc: "Downtown",
     status: "Under construction",
     tag: "Residential",
     year: "2026",
-    floors: "42",
+    
     projectName: "Kodrina",
     lokacion: "—",
     investor: "—",
