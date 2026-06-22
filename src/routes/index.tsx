@@ -1,10 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import logoUrl from "@/assets/tregtia-logo-blue.png";
 import walkthroughPreview from "@/assets/walkthrough-preview.png.asset.json";
 import heroRender from "@/assets/hero-render.jpg.asset.json";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { ArrowUpRight, Play, MapPin, Mail, Phone, Cuboid, Eye, Compass } from "lucide-react";
+import { properties } from "@/lib/properties";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -134,12 +136,8 @@ function Masthead() {
 }
 
 function Featured() {
-  const lead = { name: "Kodrina", loc: "Downtown · 42 floors", status: "Under construction", tag: "Residential", year: "2026" };
-  const others = [
-    { name: "Apollonia A22", loc: "Harbor District · 28 floors", status: "Pre-sale", tag: "Mixed-Use", year: "2027" },
-    { name: "Lakrishte Blloku A6", loc: "Hillside · 16 floors", status: "Completed", tag: "Commercial", year: "2025" },
-    { name: "Arberia C3-F2", loc: "North Bank · 9 floors", status: "Concept", tag: "Residential", year: "2028" },
-  ];
+  const lead = properties[0];
+  const others = properties.slice(1);
 
   return (
     <section id="properties" className="py-28 max-w-[1400px] mx-auto px-8">
@@ -159,7 +157,11 @@ function Featured() {
 
       {/* Magazine grid: 1 lead + 3 side */}
       <div className="grid lg:grid-cols-12 gap-8">
-        <article className="lg:col-span-7 group cursor-pointer">
+        <Link
+          to="/properties/$slug"
+          params={{ slug: lead.slug }}
+          className="lg:col-span-7 group cursor-pointer block"
+        >
           <div className="aspect-[5/4] relative overflow-hidden bg-accent border border-border">
             <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-xs uppercase tracking-[0.3em]">
               Lead render
@@ -176,11 +178,16 @@ function Featured() {
             </div>
             <ArrowUpRight className="size-6 mt-3 text-primary shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </div>
-        </article>
+        </Link>
 
         <div className="lg:col-span-5 space-y-8">
           {others.map((p) => (
-            <article key={p.name} className="group grid grid-cols-5 gap-5 cursor-pointer border-b border-border pb-8 last:border-0">
+            <Link
+              key={p.slug}
+              to="/properties/$slug"
+              params={{ slug: p.slug }}
+              className="group grid grid-cols-5 gap-5 cursor-pointer border-b border-border pb-8 last:border-0"
+            >
               <div className="col-span-2 aspect-[4/5] bg-accent border border-border relative overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-widest">
                   Render
@@ -194,13 +201,14 @@ function Featured() {
                 </div>
                 <div className="text-[10px] uppercase tracking-[0.25em] text-foreground/50 mt-3">{p.status}</div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>
     </section>
   );
 }
+
 
 function Walkthrough() {
   const [open, setOpen] = useState(false);
