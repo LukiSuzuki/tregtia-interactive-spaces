@@ -96,7 +96,56 @@ const propertyBase: Omit<Property, "apartments">[] = [
   },
 ];
 
-export const properties: Property[] = propertyBase.map((p) => ({
+const additionalNames: string[] = [
+  "Mati 1 Blloku A.11-F2",
+  "Mati 1 Blloku A.11-F1",
+  "Arbëria C3-F1",
+  "Arbëria C2.11 – VIP Zonë",
+  "Arbëria C2.6",
+  "Arbëria C2.9",
+  "Fabrika e Betonit",
+  "Apollonia A19",
+  "Apollonia A20",
+  "Apollonia A21",
+  "Apollonia A24",
+  "Apollonia A26",
+  "Apollonia A27",
+  "Apollonia A28",
+  "Apollonia Blloku A",
+  "Apollonia B19",
+  "Apollonia E6",
+  "Apollonia E3",
+  "Dodona (Shtëpia e Pleqëve)",
+  "Objekti te parku",
+  "Aktash - DAVIDOFI",
+  "Aktash 1 TETORI",
+  "Aktash Daxa",
+];
+
+const slugify = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+const additionalBase: Omit<Property, "apartments">[] = additionalNames.map((name) => ({
+  slug: slugify(name),
+  name,
+  loc: "—",
+  status: "Building",
+  tag: "Residential",
+  year: "—",
+  floors: "—",
+  projectName: name,
+  lokacion: "—",
+  investor: "—",
+  objectDestination: "—",
+  description: `${name} — part of the TREGTIA portfolio.`,
+}));
+
+export const properties: Property[] = [...propertyBase, ...additionalBase].map((p) => ({
   ...p,
   apartments: defaultApartments,
 }));
