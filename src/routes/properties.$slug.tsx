@@ -152,36 +152,36 @@ function PropertyPage() {
       {/* Interior gallery */}
       <section className="py-24">
         <div className="max-w-[1400px] mx-auto px-8">
-          <div className="flex items-end justify-between mb-10 border-b border-border pb-6">
+          <ScrollReveal className="flex items-end justify-between mb-10 border-b border-border pb-6">
             <div>
               <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-3">Catalogue · Apartments</div>
               <h2 className="font-display text-4xl md:text-5xl text-ink">Inside the apartments.</h2>
             </div>
             <span className="text-xs uppercase tracking-[0.25em] text-foreground/50">{property.apartments.length} residences</span>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          </ScrollReveal>
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-4" staggerDelay={0.08}>
             {property.apartments.map((apt: Apartment) => (
-              <Link
-                key={apt.id}
-                to="/properties/$slug/apartments/$apartmentId"
-                params={{ slug: property.slug, apartmentId: apt.id }}
-                className="group relative aspect-[4/5] bg-card border border-border overflow-hidden block hover:border-primary transition"
-              >
-                <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-[10px] uppercase tracking-[0.3em]">
-                  Interior · {apt.id}
-                </div>
-                <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-background/95 to-transparent">
-                  <div className="text-[10px] uppercase tracking-[0.25em] text-primary">{apt.type}</div>
-                  <div className="font-display text-lg text-ink mt-1 flex items-center justify-between">
-                    {apt.name}
-                    <ArrowUpRight className="size-4 text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <StaggerItem key={apt.id}>
+                <Link
+                  to="/properties/$slug/apartments/$apartmentId"
+                  params={{ slug: property.slug, apartmentId: apt.id }}
+                  className="group relative aspect-[4/5] bg-card border border-border overflow-hidden block hover:border-primary transition"
+                >
+                  <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-[10px] uppercase tracking-[0.3em]">
+                    Interior · {apt.id}
                   </div>
-                  <div className="text-[11px] text-foreground/60 mt-0.5">{apt.area}</div>
-                </div>
-              </Link>
+                  <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-background/95 to-transparent">
+                    <div className="text-[10px] uppercase tracking-[0.25em] text-primary">{apt.type}</div>
+                    <div className="font-display text-lg text-ink mt-1 flex items-center justify-between">
+                      {apt.name}
+                      <ArrowUpRight className="size-4 text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </div>
+                    <div className="text-[11px] text-foreground/60 mt-0.5">{apt.area}</div>
+                  </div>
+                </Link>
+              </StaggerItem>
             ))}
-          </div>
-
+          </StaggerContainer>
         </div>
       </section>
 
