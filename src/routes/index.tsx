@@ -1,11 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import logoUrl from "@/assets/tregtia-logo-blue.png";
 import walkthroughPreview from "@/assets/walkthrough-preview.png.asset.json";
 import heroRender from "@/assets/hero-render.jpg.asset.json";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { ArrowUpRight, Play, MapPin, Mail, Phone, Cuboid, Eye, Compass } from "lucide-react";
 import { properties } from "@/lib/properties";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll-reveal";
 
 
 export const Route = createFileRoute("/")({
