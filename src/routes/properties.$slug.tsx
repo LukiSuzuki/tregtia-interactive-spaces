@@ -188,36 +188,39 @@ function PropertyPage() {
       {/* Other properties */}
       <section className="py-24 border-t border-border bg-accent/20">
         <div className="max-w-[1400px] mx-auto px-8">
-          <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">Continue exploring</div>
-          <h2 className="font-display text-4xl md:text-5xl text-ink mb-10">Other developments.</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ScrollReveal className="mb-10">
+            <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">Continue exploring</div>
+            <h2 className="font-display text-4xl md:text-5xl text-ink">Other developments.</h2>
+          </ScrollReveal>
+          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.08}>
             {properties.filter((p) => p.slug !== property.slug).map((p) => (
-              <Link
-                key={p.slug}
-                to="/properties/$slug"
-                params={{ slug: p.slug }}
-                className="group block border border-border bg-card hover:border-primary transition"
-              >
-                <div className="aspect-[4/3] bg-accent relative overflow-hidden">
-                  {p.image ? (
-                    <img src={p.image} alt={p.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-[0.3em]">
-                      Render
-                    </div>
-                  )}
-                </div>
-                <div className="p-6 flex items-start justify-between gap-4">
-                  <div>
-                    <div className="text-[10px] uppercase tracking-[0.3em] text-primary">{p.tag} · {p.year}</div>
-                    <h3 className="font-display text-2xl mt-2 text-ink group-hover:text-primary transition">{p.name}</h3>
-                    <p className="text-sm text-foreground/70 mt-1">{p.loc}</p>
+              <StaggerItem key={p.slug}>
+                <Link
+                  to="/properties/$slug"
+                  params={{ slug: p.slug }}
+                  className="group block border border-border bg-card hover:border-primary transition h-full"
+                >
+                  <div className="aspect-[4/3] bg-accent relative overflow-hidden">
+                    {p.image ? (
+                      <img src={p.image} alt={p.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-[0.3em]">
+                        Render
+                      </div>
+                    )}
                   </div>
-                  <ArrowUpRight className="size-5 text-primary shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </div>
-              </Link>
+                  <div className="p-6 flex items-start justify-between gap-4">
+                    <div>
+                      <div className="text-[10px] uppercase tracking-[0.3em] text-primary">{p.tag} · {p.year}</div>
+                      <h3 className="font-display text-2xl mt-2 text-ink group-hover:text-primary transition">{p.name}</h3>
+                      <p className="text-sm text-foreground/70 mt-1">{p.loc}</p>
+                    </div>
+                    <ArrowUpRight className="size-5 text-primary shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </div>
+                </Link>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
