@@ -34,12 +34,14 @@ function PropertiesCatalogue() {
       {/* Header */}
       <section className="pt-32 pb-16 border-b border-border" style={{ background: "var(--gradient-hero)" }}>
         <div className="max-w-[1400px] mx-auto px-8">
-          <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-6">
-            Catalogue · All Developments
-          </div>
-          <h1 className="font-display text-[clamp(2.5rem,7vw,6rem)] leading-[0.95] text-ink">
-            Current &amp; <em className="text-primary">upcoming</em> properties.
-          </h1>
+          <ScrollReveal>
+            <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-6">
+              Catalogue · All Developments
+            </div>
+            <h1 className="font-display text-[clamp(2.5rem,7vw,6rem)] leading-[0.95] text-ink">
+              Current &amp; <em className="text-primary">upcoming</em> properties.
+            </h1>
+          </ScrollReveal>
         </div>
       </section>
 
