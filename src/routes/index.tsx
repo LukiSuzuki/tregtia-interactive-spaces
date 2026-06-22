@@ -193,9 +193,13 @@ function Featured() {
               className="group grid grid-cols-5 gap-5 cursor-pointer border-b border-border pb-8 last:border-0"
             >
               <div className="col-span-2 aspect-[4/5] bg-accent border border-border relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-widest">
-                  Render
-                </div>
+                {p.image ? (
+                  <img src={p.image} alt={p.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-widest">
+                    Render
+                  </div>
+                )}
               </div>
               <div className="col-span-3 flex flex-col justify-between">
                 <div>
