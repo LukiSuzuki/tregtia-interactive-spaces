@@ -14,7 +14,7 @@ export function SiteBackground() {
     <div
       className="fixed inset-0 -z-10"
       style={{
-        backgroundImage: `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(${bgImage.url})`,
+        backgroundImage: `linear-gradient(rgba(255,255,255,0.15), rgba(255,255,255,0.15)), url(${bgImage.url})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
