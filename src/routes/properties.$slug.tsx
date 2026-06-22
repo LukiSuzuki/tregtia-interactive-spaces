@@ -45,7 +45,7 @@ function PropertyPage() {
   const { property } = Route.useLoaderData();
 
   
-  const interior = Array.from({ length: 6 });
+  
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -147,17 +147,31 @@ function PropertyPage() {
               <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-3">Catalogue · Apartments</div>
               <h2 className="font-display text-4xl md:text-5xl text-ink">Inside the apartments.</h2>
             </div>
-            <span className="text-xs uppercase tracking-[0.25em] text-foreground/50">{interior.length} views</span>
+            <span className="text-xs uppercase tracking-[0.25em] text-foreground/50">{property.apartments.length} residences</span>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {interior.map((_, i) => (
-              <div key={i} className="relative aspect-[4/5] bg-card border border-border overflow-hidden">
+            {property.apartments.map((apt) => (
+              <Link
+                key={apt.id}
+                to="/properties/$slug/apartments/$apartmentId"
+                params={{ slug: property.slug, apartmentId: apt.id }}
+                className="group relative aspect-[4/5] bg-card border border-border overflow-hidden block hover:border-primary transition"
+              >
                 <div className="absolute inset-0 flex items-center justify-center text-foreground/40 text-[10px] uppercase tracking-[0.3em]">
-                  Interior · {String(i + 1).padStart(2, "0")}
+                  Interior · {apt.id}
                 </div>
-              </div>
+                <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-background/95 to-transparent">
+                  <div className="text-[10px] uppercase tracking-[0.25em] text-primary">{apt.type}</div>
+                  <div className="font-display text-lg text-ink mt-1 flex items-center justify-between">
+                    {apt.name}
+                    <ArrowUpRight className="size-4 text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </div>
+                  <div className="text-[11px] text-foreground/60 mt-0.5">{apt.area}</div>
+                </div>
+              </Link>
             ))}
           </div>
+
         </div>
       </section>
 
