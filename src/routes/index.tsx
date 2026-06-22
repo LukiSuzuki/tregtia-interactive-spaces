@@ -59,7 +59,6 @@ function Hero() {
       <div className="max-w-[1400px] mx-auto px-8">
         <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.3em] text-primary mb-10">
           <span className="h-px w-10 bg-primary" />
-          Issue Nº 01 · 2026 Collection
         </div>
 
         <div className="grid lg:grid-cols-12 gap-10 items-end">
