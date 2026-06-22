@@ -241,46 +241,58 @@ function Featured() {
 
 function Walkthrough() {
   const [open, setOpen] = useState(false);
+  const walkRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: walkRef,
+    offset: ["start end", "end start"],
+  });
+  const walkImgY = useTransform(scrollYProgress, [0, 1], [-40, 40]);
+
   return (
-    <section id="walkthrough" className="py-28 border-y border-border bg-accent/40">
+    <section id="walkthrough" ref={walkRef} className="py-28 border-y border-border bg-accent/40">
       <div className="max-w-[1400px] mx-auto px-8">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5">
-            <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">Feature · 3D Walkthroughs</div>
-            <h2 className="font-display text-5xl md:text-6xl text-balance text-ink">
-              Step inside, <em className="text-primary">even when</em> the walls aren't up yet.
-            </h2>
-            <p className="mt-6 text-foreground/75 max-w-md leading-relaxed">
-              Every TREGTIA property includes a fully navigable 3D model. Walk the halls,
-              ride the lift, stand on the balcony — and choose with absolute clarity.
-            </p>
-            <div className="mt-10 space-y-6">
+            <ScrollReveal>
+              <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">Feature · 3D Walkthroughs</div>
+              <h2 className="font-display text-5xl md:text-6xl text-balance text-ink">
+                Step inside, <em className="text-primary">even when</em> the walls aren't up yet.
+              </h2>
+              <p className="mt-6 text-foreground/75 max-w-md leading-relaxed">
+                Every TREGTIA property includes a fully navigable 3D model. Walk the halls,
+                ride the lift, stand on the balcony — and choose with absolute clarity.
+              </p>
+            </ScrollReveal>
+            <StaggerContainer className="mt-10 space-y-6" staggerDelay={0.12}>
               {([
                 [Eye, "Photoreal renders", "Interior and exterior in cinematic detail."],
                 [Cuboid, "Full 3D navigation", "Move freely through every floor."],
                 [Compass, "Real orientation", "Sun studies and views from your actual unit."],
               ] as const).map(([Icon, t, d]) => (
-                <div key={t} className="flex gap-4 border-t border-border pt-5">
-                  <Icon className="size-5 text-primary shrink-0 mt-1" />
-                  <div>
-                    <div className="font-display text-xl text-ink">{t}</div>
-                    <div className="text-sm text-foreground/70 mt-1">{d}</div>
+                <StaggerItem key={t}>
+                  <div className="flex gap-4 border-t border-border pt-5">
+                    <Icon className="size-5 text-primary shrink-0 mt-1" />
+                    <div>
+                      <div className="font-display text-xl text-ink">{t}</div>
+                      <div className="text-sm text-foreground/70 mt-1">{d}</div>
+                    </div>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
-          <div className="lg:col-span-7">
+          <ScrollReveal className="lg:col-span-7" delay={0.2} direction="right">
             <button
               type="button"
               onClick={() => setOpen(true)}
               className="group relative aspect-[4/3] w-full bg-card border border-border overflow-hidden text-left"
               style={{ boxShadow: "var(--shadow-elegant)" }}
             >
-              <img
+              <motion.img
                 src={walkthroughPreview.url}
                 alt="360° panorama preview"
                 className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition"
+                style={{ y: walkImgY }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
@@ -294,7 +306,7 @@ function Walkthrough() {
                 <span>Interactive 360°</span>
               </div>
             </button>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
 
