@@ -303,39 +303,6 @@ function Process() {
   );
 }
 
-function Editorial() {
-  return (
-    <section id="journal" className="py-28 border-y border-border bg-accent/30">
-      <div className="max-w-[1400px] mx-auto px-8">
-        <div className="flex items-end justify-between mb-14 border-b border-border pb-8">
-          <div>
-            <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-5">The Journal</div>
-            <h2 className="font-display text-5xl text-ink">Field notes &amp; <em className="text-primary">essays.</em></h2>
-          </div>
-          <a href="#" className="text-sm text-foreground/70 hover:text-primary hidden md:inline-flex items-center gap-1.5">
-            All entries <ArrowUpRight className="size-3.5" />
-          </a>
-        </div>
-        <div className="grid md:grid-cols-3 gap-10">
-          {[
-            ["Issue 03", "Designing for the climate of 2050", "On passive cooling, mass timber and the long now."],
-            ["Issue 02", "The 3D tour that closed a tower", "How an immersive preview converted 38 pre-sales in a weekend."],
-            ["Issue 01", "Why we walk every model", "Notes from the studio on testing every floor before pouring concrete."],
-          ].map(([t, h, d]) => (
-            <article key={h} className="group cursor-pointer">
-              <div className="aspect-[4/3] bg-card border border-border mb-5 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center text-foreground/30 text-[10px] uppercase tracking-widest">Editorial image</div>
-              </div>
-              <div className="text-[10px] uppercase tracking-[0.3em] text-primary">{t}</div>
-              <h3 className="font-display text-2xl mt-3 text-ink group-hover:text-primary transition">{h}</h3>
-              <p className="text-sm text-foreground/70 mt-2 leading-relaxed">{d}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function Contact() {
   return (
