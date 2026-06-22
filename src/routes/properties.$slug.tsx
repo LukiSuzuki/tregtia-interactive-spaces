@@ -44,7 +44,7 @@ export const Route = createFileRoute("/properties/$slug")({
 function PropertyPage() {
   const { property } = Route.useLoaderData();
 
-  const exterior = Array.from({ length: 6 });
+  
   const interior = Array.from({ length: 6 });
 
   return (
