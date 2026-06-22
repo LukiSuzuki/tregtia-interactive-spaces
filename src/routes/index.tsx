@@ -119,7 +119,7 @@ function Hero() {
           </div>
         </ScrollReveal>
 
-        <StaggerContainer className="mt-12 grid grid-cols-2 ?? md:grid-cols-4 gap-10 border-t border-border pt-10">
+        <StaggerContainer className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-10 border-t border-border pt-10">
           {[
             ["120+", "Projects delivered"],
             ["18", "Cities"],
