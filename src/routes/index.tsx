@@ -314,8 +314,8 @@ function Contact() {
             Let's design <em className="text-primary">what's next.</em>
           </h2>
           <p className="mt-6 text-foreground/75 max-w-md leading-relaxed">
-            Tell us about your project, schedule a private viewing, or request a
-            3D walkthrough of any property in our catalogue.
+            Tell us about your vision, schedule a private viewing, or inquire
+            about any property in our catalogue.
           </p>
           <div className="mt-10 space-y-4 text-sm border-t border-border pt-8">
             <div className="flex items-center gap-3"><Mail className="size-4 text-primary" /> hello@tregtia.com</div>
