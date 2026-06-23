@@ -24,15 +24,18 @@ export type Property = {
   apartments: Apartment[];
 };
 
-const buildingAssets = import.meta.glob<{ default: { url: string } }>(
-  "../assets/buildings/*.jpg.asset.json",
-  { eager: true },
+const buildingSlugs = [
+  "aktash-1-tetori","aktash-davidofi","aktash-daxa",
+  "apollonia-a19","apollonia-a20","apollonia-a21","apollonia-a22","apollonia-a24",
+  "apollonia-a26","apollonia-a27","apollonia-a28","apollonia-b19","apollonia-blloku-a",
+  "apollonia-e3","apollonia-e6",
+  "arberia-c2-11-vip-zone","arberia-c2-6","arberia-c2-9","arberia-c3-f1","arberia-c3-f2",
+  "dodona-shtepia-e-pleqeve","fabrika-e-betonit","kodrina","lakrishte-blloku-a6",
+  "mati-1-blloku-a-11-f1","mati-1-blloku-a-11-f2","objekti-te-parku",
+];
+const buildingImageBySlug: Record<string, string> = Object.fromEntries(
+  buildingSlugs.map((s) => [s, `/images/buildings/${s}.jpg`]),
 );
-const buildingImageBySlug: Record<string, string> = {};
-for (const [path, mod] of Object.entries(buildingAssets)) {
-  const slug = path.split("/").pop()!.replace(".jpg.asset.json", "");
-  buildingImageBySlug[slug] = mod.default.url;
-}
 
 
 const defaultApartments: Apartment[] = [
