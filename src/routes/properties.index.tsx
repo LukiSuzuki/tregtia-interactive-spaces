@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, ArrowLeft } from "lucide-react";
-import logoUrl from "@/assets/tregtia-logo-blue.png";
+const logoUrl = "/images/tregtia-logo-blue.png";
 import { properties } from "@/lib/properties";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll-reveal";
 
