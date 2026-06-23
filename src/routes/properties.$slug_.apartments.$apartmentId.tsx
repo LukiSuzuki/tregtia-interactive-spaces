@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpRight, Play, MapPin } from "lucide-react";
-import logoUrl from "@/assets/tregtia-logo-blue.png";
+const logoUrl = "/images/tregtia-logo-blue.png";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { getApartment, type Property, type Apartment } from "@/lib/properties";
 
