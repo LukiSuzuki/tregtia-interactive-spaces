@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 const logoUrl = "/images/tregtia-logo-blue.png";
-import walkthroughPreview from "@/assets/walkthrough-preview.png.asset.json";
-import heroRender from "@/assets/hero-render.jpg.asset.json";
+const walkthroughPreview = "/images/walkthrough-preview.png";
+const heroRender = "/images/hero-render.jpg";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { ArrowUpRight, Play, MapPin, Mail, Phone, Cuboid, Eye, Compass } from "lucide-react";
 import { properties } from "@/lib/properties";
@@ -107,7 +107,7 @@ function Hero() {
         <ScrollReveal delay={0.3}>
           <div className="mt-20 aspect-[21/9] relative overflow-hidden border border-border bg-accent">
             <motion.img
-              src={heroRender.url}
+              src={heroRender}
               alt="Kodrina residential complex aerial render"
               className="absolute inset-0 w-full h-full object-cover"
               style={{ y: heroY }}
@@ -289,7 +289,7 @@ function Walkthrough() {
               style={{ boxShadow: "var(--shadow-elegant)" }}
             >
               <motion.img
-                src={walkthroughPreview.url}
+                src={walkthroughPreview}
                 alt="360° panorama preview"
                 className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition"
                 style={{ y: walkImgY }}
