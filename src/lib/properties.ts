@@ -24,14 +24,14 @@ export type Property = {
   apartments: Apartment[];
 };
 
-const buildingAssets = import.meta.glob<{ default: { url: string } }>(
-  "../assets/buildings/*.jpg.asset.json",
-  { eager: true },
+const buildingImages = import.meta.glob<string>(
+  "/public/images/buildings/*.jpg",
+  { eager: true, query: "?url", import: "default" },
 );
 const buildingImageBySlug: Record<string, string> = {};
-for (const [path, mod] of Object.entries(buildingAssets)) {
-  const slug = path.split("/").pop()!.replace(".jpg.asset.json", "");
-  buildingImageBySlug[slug] = mod.default.url;
+for (const [path, url] of Object.entries(buildingImages)) {
+  const slug = path.split("/").pop()!.replace(".jpg", "");
+  buildingImageBySlug[slug] = url as unknown as string;
 }
 
 
