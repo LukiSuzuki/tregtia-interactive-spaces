@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import bgImage from "@/assets/wallpaperflare.com_wallpaper.jpg.asset.json";
+
+const bgUrl = "/images/wallpaper.jpg";
 
 export function SiteBackground() {
   useEffect(() => {
@@ -14,7 +15,7 @@ export function SiteBackground() {
     <div
       className="fixed inset-0 -z-10"
       style={{
-        backgroundImage: `linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url(${bgImage.url})`,
+        backgroundImage: `linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url(${bgUrl})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
