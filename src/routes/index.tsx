@@ -289,7 +289,7 @@ function Walkthrough() {
               style={{ boxShadow: "var(--shadow-elegant)" }}
             >
               <motion.img
-                src={walkthroughPreview.url}
+                src={walkthroughPreview}
                 alt="360° panorama preview"
                 className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition"
                 style={{ y: walkImgY }}
