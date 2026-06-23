@@ -107,7 +107,7 @@ function Hero() {
         <ScrollReveal delay={0.3}>
           <div className="mt-20 aspect-[21/9] relative overflow-hidden border border-border bg-accent">
             <motion.img
-              src={heroRender.url}
+              src={heroRender}
               alt="Kodrina residential complex aerial render"
               className="absolute inset-0 w-full h-full object-cover"
               style={{ y: heroY }}
