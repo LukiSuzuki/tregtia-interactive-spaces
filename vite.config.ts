@@ -1,6 +1,6 @@
-// Static SSG build for Hostinger / any static host.
-// Every route is prerendered to its own .html file at build time.
-// Output: dist/client/ — upload its contents (including .htaccess) via FTP.
+// Build config: Lovable publishes via Nitro (Cloudflare Worker).
+// Every route is also prerendered to static HTML so the same build
+// can be uploaded to Hostinger from dist/client/.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { properties } from "./src/lib/properties";
 
@@ -13,7 +13,6 @@ const apartmentPaths = properties.flatMap((p) =>
 const allPaths = [...staticPaths, ...propertyPaths, ...apartmentPaths];
 
 export default defineConfig({
-  nitro: false,
   tanstackStart: {
     prerender: {
       enabled: true,
